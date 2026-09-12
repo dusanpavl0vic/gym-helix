@@ -60,7 +60,9 @@
     "bodyweight": "Bodyweight (optional)",
     "notes": "Notes",
     "notesPlaceholder": "How did it go?",
-    "save": "Save workout"
+    "save": "Save workout",
+    "celebrate": "Nice work!"
   },
-  "noActive": "No active workout."
+  "noActive": "No active workout.",
+  "setDone": "Set {{n}} done"
 }

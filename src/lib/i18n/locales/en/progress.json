@@ -1,7 +1,11 @@
 {
   "title": "Progress",
   "subtitle": "weights per exercise, weekly volume, records",
-  "tabs": { "strength": "Strength", "history": "History", "body": "Body" },
+  "tabs": {
+    "strength": "Strength",
+    "history": "History",
+    "body": "Body"
+  },
   "chartTitle": "{{name}} — heaviest set",
   "delta": "{{value}} {{unit}} in 30 days",
   "noData": "No data yet. Log a few workouts and come back.",
@@ -25,5 +29,30 @@
     "deleteBody": "This cannot be undone.",
     "skipped": "skipped",
     "deload": "DELOAD"
-  }
+  },
+  "metrics": {
+    "topWeight": "Weight",
+    "e1rm": "1RM",
+    "volume": "Volume",
+    "reps": "Reps"
+  },
+  "metricTitles": {
+    "topWeight": "{{name}} — heaviest set",
+    "e1rm": "{{name}} — estimated 1RM",
+    "volume": "{{name}} — volume per workout",
+    "reps": "{{name}} — total reps"
+  },
+  "overview": "Overview",
+  "sessionsPerWeek": "Workouts per week",
+  "setsPerMuscle": "Sets per muscle group (this week)",
+  "setsPerMuscleHint": "Green zone: target 12–16 sets per week in a deficit",
+  "durationTrend": "Workout duration (min)",
+  "cardioPerWeek": "Cardio per week (min)",
+  "records": "Records",
+  "allExercises": "All exercises",
+  "sessionsTotal": "workouts total",
+  "setsTotal": "sets total",
+  "avgDuration": "average duration",
+  "exerciseTable": "Per workout",
+  "bodyCharts": "Body charts"
 }

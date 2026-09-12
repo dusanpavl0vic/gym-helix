@@ -19,16 +19,31 @@
   "profile": "Profil",
   "name": "Ime",
   "language": "Jezik",
-  "languages": { "sr": "Srpski", "en": "English" },
+  "languages": {
+    "sr": "Srpski",
+    "en": "English"
+  },
   "unit": "Jedinica za prikaz",
   "restTitle": "Podrazumevane pauze (s)",
-  "restKinds": { "heavyCompound": "Teški složeni", "machine": "Mašine i srednje", "isolation": "Izolacije" },
+  "restKinds": {
+    "heavyCompound": "Teški složeni",
+    "machine": "Mašine i srednje",
+    "isolation": "Izolacije"
+  },
   "weightStep": "Korak kilaže (±)",
   "timer": "Tajmer",
-  "sound": "Zvuk na kraju pauze",
   "vibration": "Vibracija na kraju pauze",
   "notifications": "Obaveštenje kad je ekran zaključan",
   "equipment": "Oprema",
   "bar": "Težina šipke (kg)",
-  "plates": "Dostupne pločice (kg)"
+  "plates": "Dostupne pločice (kg)",
+  "restSound": "Zvuk na kraju pauze",
+  "restSoundModes": {
+    "app": "Zvuk aplikacije",
+    "system": "Sistemski zvuk",
+    "off": "Isključen"
+  },
+  "restSoundHint": "Sistemski zvuk koristi zvuk obaveštenja telefona.",
+  "countdownTicks": "Otkucaji u poslednje 3 sekunde",
+  "testSound": "Probaj zvuk"
 }

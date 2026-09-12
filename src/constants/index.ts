@@ -10,3 +10,6 @@ export * from './muscles';
 export * from './storage';
 export * from './routes';
 export * from './config';
+export * from './animation';
+export * from './charts';
+export * from './sound';

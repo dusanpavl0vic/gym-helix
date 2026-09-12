@@ -1,7 +1,11 @@
 {
   "title": "Napredak",
   "subtitle": "težine po vežbi, nedeljni volumen, rekordi",
-  "tabs": { "strength": "Snaga", "history": "Istorija", "body": "Telo" },
+  "tabs": {
+    "strength": "Snaga",
+    "history": "Istorija",
+    "body": "Telo"
+  },
   "chartTitle": "{{name}} — najteža serija",
   "delta": "{{value}} {{unit}} za 30 dana",
   "noData": "Još nema podataka. Odradi par treninga pa se vrati ovde.",
@@ -25,5 +29,30 @@
     "deleteBody": "Ovo ne može da se vrati.",
     "skipped": "preskočeno",
     "deload": "DELOAD"
-  }
+  },
+  "metrics": {
+    "topWeight": "Kilaža",
+    "e1rm": "1RM",
+    "volume": "Volumen",
+    "reps": "Ponavljanja"
+  },
+  "metricTitles": {
+    "topWeight": "{{name}} — najteža serija",
+    "e1rm": "{{name}} — procena 1RM",
+    "volume": "{{name}} — volumen po treningu",
+    "reps": "{{name}} — ukupno ponavljanja"
+  },
+  "overview": "Pregled",
+  "sessionsPerWeek": "Treninzi po nedelji",
+  "setsPerMuscle": "Serije po mišićnoj grupi (ova nedelja)",
+  "setsPerMuscleHint": "Zelena zona: cilj 12–16 serija nedeljno u deficitu",
+  "durationTrend": "Trajanje treninga (min)",
+  "cardioPerWeek": "Kardio po nedelji (min)",
+  "records": "Rekordi",
+  "allExercises": "Sve vežbe",
+  "sessionsTotal": "treninga ukupno",
+  "setsTotal": "serija ukupno",
+  "avgDuration": "prosečno trajanje",
+  "exerciseTable": "Po treningu",
+  "bodyCharts": "Grafici tela"
 }

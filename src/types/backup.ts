@@ -1,12 +1,15 @@
 import type { BodyMeasurement, CardioSession, Exercise, Program, RotationState, Session } from './domain';
 
+export type RestSoundMode = 'app' | 'system' | 'off';
+
 export interface SettingsState {
   athleteName: string;
   language: 'sr' | 'en';
   unit: 'kg' | 'lb';
   restByKind: { heavyCompound: number; machine: number; isolation: number };
   weightStepKg: number;
-  sound: boolean;
+  restSound: RestSoundMode;
+  countdownTicks: boolean;
   vibration: boolean;
   notifications: boolean;
   barKg: number;

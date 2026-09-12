@@ -60,7 +60,9 @@
     "bodyweight": "Telesna težina (opciono)",
     "notes": "Napomena",
     "notesPlaceholder": "Kako je prošlo?",
-    "save": "Sačuvaj trening"
+    "save": "Sačuvaj trening",
+    "celebrate": "Bravo!"
   },
-  "noActive": "Nema aktivnog treninga."
+  "noActive": "Nema aktivnog treninga.",
+  "setDone": "Serija {{n}} završena"
 }

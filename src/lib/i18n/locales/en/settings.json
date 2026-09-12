@@ -19,16 +19,31 @@
   "profile": "Profile",
   "name": "Name",
   "language": "Language",
-  "languages": { "sr": "Srpski", "en": "English" },
+  "languages": {
+    "sr": "Srpski",
+    "en": "English"
+  },
   "unit": "Display unit",
   "restTitle": "Default rest (s)",
-  "restKinds": { "heavyCompound": "Heavy compound", "machine": "Machines & medium", "isolation": "Isolation" },
+  "restKinds": {
+    "heavyCompound": "Heavy compound",
+    "machine": "Machines & medium",
+    "isolation": "Isolation"
+  },
   "weightStep": "Weight step (±)",
   "timer": "Timer",
-  "sound": "Sound when rest ends",
   "vibration": "Vibrate when rest ends",
   "notifications": "Notification when screen is locked",
   "equipment": "Equipment",
   "bar": "Bar weight (kg)",
-  "plates": "Available plates (kg)"
+  "plates": "Available plates (kg)",
+  "restSound": "Sound when rest ends",
+  "restSoundModes": {
+    "app": "App sound",
+    "system": "System sound",
+    "off": "Off"
+  },
+  "restSoundHint": "System sound uses your phone notification sound.",
+  "countdownTicks": "Ticks in the last 3 seconds",
+  "testSound": "Test sound"
 }
