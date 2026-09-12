@@ -1,0 +1,1 @@
+export { StrengthTab } from './StrengthTab';

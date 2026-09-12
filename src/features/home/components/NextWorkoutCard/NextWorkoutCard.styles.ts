@@ -1,0 +1,30 @@
+import { StyleSheet } from 'react-native';
+
+import { colors } from '@/constants/colors';
+import { metrics } from '@/constants/metrics';
+import { radii } from '@/constants/radii';
+import { spacing } from '@/constants/spacing';
+import { typography } from '@/constants/typography';
+
+export const styles = StyleSheet.create({
+  card: { backgroundColor: colors.forest, borderRadius: radii.hero, padding: spacing.x6, gap: spacing.x3, overflow: 'hidden' },
+  circle: {
+    position: 'absolute',
+    right: -40,
+    top: -40,
+    width: metrics.heroCircle,
+    height: metrics.heroCircle,
+    borderRadius: metrics.heroCircle / 2,
+    backgroundColor: colors.forestLight,
+  },
+  texts: { gap: spacing.sm },
+  eyebrowRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  eyebrow: { ...typography.monoTag, color: colors.lime },
+  title: { ...typography.hero, color: colors.paperWarm },
+  meta: { ...typography.body, color: colors.sage },
+  footnote: { ...typography.monoTag, color: colors.sage },
+  tags: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.md },
+  actions: { gap: spacing.xs },
+  secondary: { alignSelf: 'center' },
+  secondaryText: { ...typography.captionSemibold, color: colors.mint },
+});
