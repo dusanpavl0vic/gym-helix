@@ -1,0 +1,66 @@
+{
+  "exercisePosition": "vežba {{current}}/{{total}}",
+  "colSet": "SET",
+  "colReps": "PONOV.",
+  "finishSet": "Završio sam seriju {{n}} ✓",
+  "finishWorkout": "Završi trening ✓",
+  "next": "SLEDEĆE",
+  "nextSet": "Serija {{n}} · {{detail}} · pauza {{rest}}s",
+  "nextExercise": "Nova vežba — {{name}} · pauza {{rest}}s",
+  "lastSet": "Poslednja serija — kraj treninga",
+  "lastTime": "Prošli put: {{sets}}",
+  "firstTime": "Prvi put: izaberi kilažu s kojom prva serija pada na {{reps}} ponavljanja.",
+  "target": "cilj {{value}}",
+  "suggestion": {
+    "increase": "Sve serije su stigle do vrha raspona. Predlog: +{{inc}} kg.",
+    "hold": "Zadrži kilažu i pokušaj ponavljanje više.",
+    "recover": "Ponavljanja padaju 2 treninga zaredom. Zadrži kilažu i proveri san i oporavak."
+  },
+  "rir": "RIR",
+  "rirOptional": "RIR (opciono)",
+  "editSet": "Izmeni seriju {{n}}",
+  "deloadTag": "DELOAD · RIR 4–5",
+  "rest": {
+    "title": "PAUZA IZMEĐU SERIJA",
+    "of": "od {{total}}s",
+    "nextSet": "SLEDEĆA SERIJA",
+    "newExercise": "NOVA VEŽBA",
+    "setOf": "Serija {{n}} · {{name}}",
+    "extend": "+{{sec}}s",
+    "skip": "Preskoči pauzu",
+    "notificationTitle": "Pauza je gotova",
+    "notificationBody": "Sledeće: {{name}}",
+    "channelName": "Tajmer pauze"
+  },
+  "actions": {
+    "title": "Opcije vežbe",
+    "substitute": "Zameni: {{name}}",
+    "restoreOriginal": "Vrati originalnu vežbu",
+    "skip": "Preskoči vežbu",
+    "unskip": "Vrati vežbu",
+    "addSet": "Dodaj seriju",
+    "removeSet": "Ukloni poslednju seriju",
+    "details": "Detalji vežbe"
+  },
+  "skipped": "PRESKOČENO",
+  "substituted": "umesto: {{name}}",
+  "exit": {
+    "title": "Izađi iz treninga?",
+    "body": "Trening ostaje sačuvan pa možeš da nastaviš kasnije, ili ga možeš odbaciti.",
+    "later": "Nastavi kasnije",
+    "discard": "Odbaci trening"
+  },
+  "summary": {
+    "title": "Trening završen",
+    "duration": "trajanje",
+    "volume": "volumen",
+    "sets": "serija",
+    "records": "Novi rekordi",
+    "noRecords": "Nema novih rekorda. Održavanje u deficitu je takođe uspeh.",
+    "bodyweight": "Telesna težina (opciono)",
+    "notes": "Napomena",
+    "notesPlaceholder": "Kako je prošlo?",
+    "save": "Sačuvaj trening"
+  },
+  "noActive": "Nema aktivnog treninga."
+}

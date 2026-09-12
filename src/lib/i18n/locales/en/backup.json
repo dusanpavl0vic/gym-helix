@@ -1,0 +1,19 @@
+{
+  "title": "Backup",
+  "exportTitle": "Export data",
+  "exportBody": "All programs, workouts, cardio, measurements and settings in one JSON file.",
+  "export": "Export JSON",
+  "importTitle": "Import data",
+  "importBody": "Replaces all current data with the data from the file.",
+  "import": "Import JSON",
+  "importConfirmTitle": "Replace all data?",
+  "importConfirmBody": "Current data will be deleted and replaced with the backup.",
+  "importSuccess": "Data imported.",
+  "importError": "The file is not a valid backup.",
+  "resetTitle": "Delete all data",
+  "resetBody": "Deletes workouts, measurements, cardio and restores the default program.",
+  "reset": "Delete everything",
+  "resetConfirmTitle": "Delete everything?",
+  "resetConfirmBody": "This cannot be undone. Export a backup first.",
+  "resetDone": "Data deleted."
+}

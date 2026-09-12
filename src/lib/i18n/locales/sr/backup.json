@@ -1,0 +1,19 @@
+{
+  "title": "Backup",
+  "exportTitle": "Izvezi podatke",
+  "exportBody": "Svi programi, treninzi, kardio, merenja i podešavanja u jednom JSON fajlu.",
+  "export": "Izvezi JSON",
+  "importTitle": "Uvezi podatke",
+  "importBody": "Zamenjuje sve trenutne podatke podacima iz fajla.",
+  "import": "Uvezi JSON",
+  "importConfirmTitle": "Zameniti sve podatke?",
+  "importConfirmBody": "Trenutni podaci biće obrisani i zamenjeni podacima iz backup-a.",
+  "importSuccess": "Podaci su uvezeni.",
+  "importError": "Fajl nije ispravan backup.",
+  "resetTitle": "Obriši sve podatke",
+  "resetBody": "Briše treninge, merenja, kardio i vraća podrazumevani program.",
+  "reset": "Obriši sve",
+  "resetConfirmTitle": "Obrisati sve?",
+  "resetConfirmBody": "Ovo ne može da se vrati. Preporuka: prvo izvezi backup.",
+  "resetDone": "Podaci su obrisani."
+}

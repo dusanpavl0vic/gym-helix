@@ -1,0 +1,16 @@
+{
+  "title": "Cardio & swim",
+  "type": "Type",
+  "duration": "Duration (min)",
+  "notes": "Notes",
+  "save": "Save",
+  "hints": {
+    "swim": "400 m easy · 8 × 50 m fast · 200 m kick · 4 × 100 m · 200 m easy",
+    "zone2": "Heart rate 118–137 bpm · you can talk in sentences",
+    "walk": "Aim for 8,000–10,000 steps a day",
+    "hiit": "Not on leg day"
+  },
+  "recent": "Recent entries",
+  "empty": "No entries yet.",
+  "durationRequired": "Enter a duration"
+}

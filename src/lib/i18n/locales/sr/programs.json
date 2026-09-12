@@ -1,0 +1,64 @@
+{
+  "title": "Programi",
+  "active": "AKTIVAN",
+  "default": "PODRAZUMEVANI",
+  "setActive": "Postavi kao aktivan",
+  "newEmpty": "+ Nov prazan program",
+  "duplicate": "Kopiraj",
+  "delete": "Obriši",
+  "deleteTitle": "Obrisati program?",
+  "deleteBody": "Istorija treninga ostaje sačuvana.",
+  "cannotDeleteLast": "Mora da postoji bar jedan program.",
+  "restoreDefault": "Vrati podrazumevani program",
+  "restoreTitle": "Vratiti podrazumevani program?",
+  "restoreBody": "Recomp Full Body A/B/C biće vraćen na originalne vrednosti i postavljen kao aktivan.",
+  "copyName": "{{name}} (kopija)",
+  "untitled": "Nov program",
+  "workoutsCount_one": "{{count}} trening",
+  "workoutsCount_few": "{{count}} treninga",
+  "workoutsCount_other": "{{count}} treninga",
+  "edit": {
+    "title": "Izmena programa",
+    "name": "Naziv programa",
+    "workouts": "Treninzi",
+    "rotation": "Redosled rotacije",
+    "rotationHint": "Treninzi se smenjuju redom, bez obzira na dan u nedelji.",
+    "addWorkout": "+ Dodaj trening",
+    "newWorkoutName": "Trening {{letter}}",
+    "deleteWorkoutTitle": "Obrisati trening?",
+    "deleteWorkoutBody": "Trening će biti uklonjen iz programa i rotacije.",
+    "moveUp": "Pomeri gore",
+    "moveDown": "Pomeri dole"
+  },
+  "workoutEdit": {
+    "title": "Izmena treninga",
+    "name": "Naziv",
+    "focus": "Fokus",
+    "exercises": "Vežbe",
+    "addExercise": "+ Dodaj vežbu",
+    "sets": "Serije",
+    "repsMin": "Min ponav.",
+    "repsMax": "Maks ponav.",
+    "rir": "RIR",
+    "rest": "Pauza (s)",
+    "note": "Napomena",
+    "notePlaceholder": "npr. nikad do otkaza",
+    "alternatives": "Alternative",
+    "addAlternative": "+ Alternativa",
+    "perSide": "Po strani / nozi",
+    "remove": "Ukloni vežbu",
+    "estimate": "~{{minutes}} min · {{sets}} serija"
+  },
+  "seed": {
+    "name": "Recomp Full Body A/B/C",
+    "workouts": {
+      "FB_A": { "name": "Full Body A", "focus": "kvadricepsi / guranje" },
+      "FB_B": { "name": "Full Body B", "focus": "zadnja loža / povlačenje" },
+      "FB_C": { "name": "Full Body C", "focus": "jednonožno / gornji deo" }
+    },
+    "notes": {
+      "neverToFailure": "Nikad do otkaza.",
+      "trapBar": "Nikad do otkaza. Ako nema trap bar-a: hip thrust 3 × 8–12."
+    }
+  }
+}

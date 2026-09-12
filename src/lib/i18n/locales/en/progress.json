@@ -1,0 +1,29 @@
+{
+  "title": "Progress",
+  "subtitle": "weights per exercise, weekly volume, records",
+  "tabs": { "strength": "Strength", "history": "History", "body": "Body" },
+  "chartTitle": "{{name}} — heaviest set",
+  "delta": "{{value}} {{unit}} in 30 days",
+  "noData": "No data yet. Log a few workouts and come back.",
+  "chartEmpty": "Not enough data for a chart",
+  "totalVolume": "TOTAL VOLUME",
+  "last30": "last 30 days",
+  "weeklyVolume": "Weekly volume (t)",
+  "weekLabel": "W{{n}}",
+  "history": {
+    "empty": "No workouts this month.",
+    "sessionMeta": "{{sets}} sets · {{minutes}} min · {{volume}} t",
+    "cardioMeta": "{{minutes}} min"
+  },
+  "session": {
+    "title": "Workout",
+    "exercises": "Exercises",
+    "notes": "Notes",
+    "bodyweight": "Bodyweight",
+    "delete": "Delete workout",
+    "deleteTitle": "Delete workout?",
+    "deleteBody": "This cannot be undone.",
+    "skipped": "skipped",
+    "deload": "DELOAD"
+  }
+}

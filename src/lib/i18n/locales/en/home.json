@@ -1,0 +1,27 @@
+{
+  "greeting": "Hi, {{name}}",
+  "nextWorkout": "NEXT WORKOUT",
+  "activeWorkout": "WORKOUT IN PROGRESS",
+  "meta": "{{exercises}} exercises · ~{{minutes}} min · {{sets}} sets",
+  "lastWorkout": "Last workout: {{when}}",
+  "noWorkoutsYet": "No finished workouts yet",
+  "start": "Start workout →",
+  "resume": "Resume workout →",
+  "chooseOther": "Choose another",
+  "chooseTitle": "Choose next workout",
+  "stats": { "thisWeek": "this week", "volume": "volume", "cycle": "cycle" },
+  "pastWorkouts": "Past workouts",
+  "progressLink": "Progress",
+  "noHistory": "Your finished workouts will show up here.",
+  "historyMeta": "{{day}} · {{minutes}} min · {{sets}} sets",
+  "quick": { "cardio": "Cardio / swim", "cardioHint": "Quick log", "weight": "Weight today", "weightHint": "Enter kg", "weightSaved": "Saved: {{value}} kg" },
+  "deload": {
+    "title": "Time for a deload week",
+    "body": "You finished 6 rounds. Next round: same exercises, 2 sets, same weight, RIR 4–5.",
+    "start": "Start deload",
+    "dismiss": "Not now",
+    "active_one": "Deload in progress · {{count}} workout left",
+    "active_other": "Deload in progress · {{count}} workouts left"
+  },
+  "emptyProgram": "The active program has no workouts. Add some in Plan."
+}

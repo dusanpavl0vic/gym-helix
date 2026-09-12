@@ -1,0 +1,63 @@
+{
+  "title": "Programs",
+  "active": "ACTIVE",
+  "default": "DEFAULT",
+  "setActive": "Set as active",
+  "newEmpty": "+ New empty program",
+  "duplicate": "Duplicate",
+  "delete": "Delete",
+  "deleteTitle": "Delete program?",
+  "deleteBody": "Workout history is kept.",
+  "cannotDeleteLast": "At least one program must exist.",
+  "restoreDefault": "Restore default program",
+  "restoreTitle": "Restore default program?",
+  "restoreBody": "Recomp Full Body A/B/C will be reset to its original values and set as active.",
+  "copyName": "{{name}} (copy)",
+  "untitled": "New program",
+  "workoutsCount_one": "{{count}} workout",
+  "workoutsCount_other": "{{count}} workouts",
+  "edit": {
+    "title": "Edit program",
+    "name": "Program name",
+    "workouts": "Workouts",
+    "rotation": "Rotation order",
+    "rotationHint": "Workouts rotate in order, regardless of the day of the week.",
+    "addWorkout": "+ Add workout",
+    "newWorkoutName": "Workout {{letter}}",
+    "deleteWorkoutTitle": "Delete workout?",
+    "deleteWorkoutBody": "The workout will be removed from the program and rotation.",
+    "moveUp": "Move up",
+    "moveDown": "Move down"
+  },
+  "workoutEdit": {
+    "title": "Edit workout",
+    "name": "Name",
+    "focus": "Focus",
+    "exercises": "Exercises",
+    "addExercise": "+ Add exercise",
+    "sets": "Sets",
+    "repsMin": "Min reps",
+    "repsMax": "Max reps",
+    "rir": "RIR",
+    "rest": "Rest (s)",
+    "note": "Note",
+    "notePlaceholder": "e.g. never to failure",
+    "alternatives": "Alternatives",
+    "addAlternative": "+ Alternative",
+    "perSide": "Per side / leg",
+    "remove": "Remove exercise",
+    "estimate": "~{{minutes}} min · {{sets}} sets"
+  },
+  "seed": {
+    "name": "Recomp Full Body A/B/C",
+    "workouts": {
+      "FB_A": { "name": "Full Body A", "focus": "quads / push" },
+      "FB_B": { "name": "Full Body B", "focus": "hamstrings / pull" },
+      "FB_C": { "name": "Full Body C", "focus": "single-leg / upper" }
+    },
+    "notes": {
+      "neverToFailure": "Never to failure.",
+      "trapBar": "Never to failure. No trap bar: hip thrust 3 × 8–12."
+    }
+  }
+}

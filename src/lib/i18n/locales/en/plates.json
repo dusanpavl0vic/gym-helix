@@ -1,0 +1,10 @@
+{
+  "title": "Plate calculator",
+  "target": "Target weight",
+  "bar": "Bar",
+  "perSide": "PER SIDE",
+  "total": "Total on bar",
+  "remainder": "Not exact. Closest is {{value}} kg.",
+  "belowBar": "Weight is below the bar weight.",
+  "onlyBar": "Bar only"
+}

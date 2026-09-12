@@ -1,0 +1,24 @@
+{
+  "title": "My plan",
+  "subtitle": "{{program}} · rotation {{rotation}}",
+  "scheme": "{{sets}} × {{repsMin}}–{{repsMax}}",
+  "schemeFixed": "{{sets}} × {{reps}}",
+  "perSide": "per side",
+  "rir": "RIR {{value}}",
+  "rirRange": "RIR {{min}}–{{max}}",
+  "rest": "rest {{value}}s",
+  "restRange": "rest {{min}}–{{max}}s",
+  "next": "NEXT",
+  "startThis": "Start this workout",
+  "edit": "Edit plan",
+  "noWorkouts": "This program has no workouts.",
+  "noExercises": "This workout has no exercises.",
+  "warmup": {
+    "title": "Warm-up · 8 min",
+    "steps": [
+      "5 min bike / rower / incline walk",
+      "2 min dynamic mobility: shoulder circles, leg swings, cat-camel",
+      "2 light sets of the first exercise: ~50% and ~75% of working weight × 5"
+    ]
+  }
+}

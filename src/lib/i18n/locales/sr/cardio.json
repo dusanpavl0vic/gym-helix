@@ -1,0 +1,16 @@
+{
+  "title": "Kardio i bazen",
+  "type": "Vrsta",
+  "duration": "Trajanje (min)",
+  "notes": "Napomena",
+  "save": "Sačuvaj",
+  "hints": {
+    "swim": "400 m lagano · 8 × 50 m brže · 200 m daska · 4 × 100 m · 200 m lagano",
+    "zone2": "Puls 118–137 bpm · možeš da pričaš u rečenicama",
+    "walk": "Cilj 8.000–10.000 koraka dnevno",
+    "hiit": "Ne na dan treninga nogu"
+  },
+  "recent": "Poslednji unosi",
+  "empty": "Još nema unosa.",
+  "durationRequired": "Unesi trajanje"
+}

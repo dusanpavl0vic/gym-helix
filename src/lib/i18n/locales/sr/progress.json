@@ -1,0 +1,29 @@
+{
+  "title": "Napredak",
+  "subtitle": "težine po vežbi, nedeljni volumen, rekordi",
+  "tabs": { "strength": "Snaga", "history": "Istorija", "body": "Telo" },
+  "chartTitle": "{{name}} — najteža serija",
+  "delta": "{{value}} {{unit}} za 30 dana",
+  "noData": "Još nema podataka. Odradi par treninga pa se vrati ovde.",
+  "chartEmpty": "Nema dovoljno podataka za grafik",
+  "totalVolume": "UKUPAN VOLUMEN",
+  "last30": "poslednjih 30 dana",
+  "weeklyVolume": "Nedeljni volumen (t)",
+  "weekLabel": "N{{n}}",
+  "history": {
+    "empty": "Nema treninga u ovom mesecu.",
+    "sessionMeta": "{{sets}} serija · {{minutes}} min · {{volume}} t",
+    "cardioMeta": "{{minutes}} min"
+  },
+  "session": {
+    "title": "Trening",
+    "exercises": "Vežbe",
+    "notes": "Napomena",
+    "bodyweight": "Telesna težina",
+    "delete": "Obriši trening",
+    "deleteTitle": "Obrisati trening?",
+    "deleteBody": "Ovo ne može da se vrati.",
+    "skipped": "preskočeno",
+    "deload": "DELOAD"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "exercisePosition": "exercise {{current}}/{{total}}",
+  "colSet": "SET",
+  "colReps": "REPS",
+  "finishSet": "Finished set {{n}} ✓",
+  "finishWorkout": "Finish workout ✓",
+  "next": "NEXT",
+  "nextSet": "Set {{n}} · {{detail}} · rest {{rest}}s",
+  "nextExercise": "New exercise — {{name}} · rest {{rest}}s",
+  "lastSet": "Last set — end of workout",
+  "lastTime": "Last time: {{sets}}",
+  "firstTime": "First time: pick a weight where the first set lands at {{reps}} reps.",
+  "target": "target {{value}}",
+  "suggestion": {
+    "increase": "All sets hit the top of the range. Suggestion: +{{inc}} kg.",
+    "hold": "Keep the weight and aim for one more rep.",
+    "recover": "Reps dropped two workouts in a row. Keep the weight and check sleep and recovery."
+  },
+  "rir": "RIR",
+  "rirOptional": "RIR (optional)",
+  "editSet": "Edit set {{n}}",
+  "deloadTag": "DELOAD · RIR 4–5",
+  "rest": {
+    "title": "REST BETWEEN SETS",
+    "of": "of {{total}}s",
+    "nextSet": "NEXT SET",
+    "newExercise": "NEW EXERCISE",
+    "setOf": "Set {{n}} · {{name}}",
+    "extend": "+{{sec}}s",
+    "skip": "Skip rest",
+    "notificationTitle": "Rest is over",
+    "notificationBody": "Next: {{name}}",
+    "channelName": "Rest timer"
+  },
+  "actions": {
+    "title": "Exercise options",
+    "substitute": "Swap: {{name}}",
+    "restoreOriginal": "Restore original exercise",
+    "skip": "Skip exercise",
+    "unskip": "Restore exercise",
+    "addSet": "Add set",
+    "removeSet": "Remove last set",
+    "details": "Exercise details"
+  },
+  "skipped": "SKIPPED",
+  "substituted": "instead of: {{name}}",
+  "exit": {
+    "title": "Leave workout?",
+    "body": "Your workout is saved so you can resume later, or you can discard it.",
+    "later": "Resume later",
+    "discard": "Discard workout"
+  },
+  "summary": {
+    "title": "Workout finished",
+    "duration": "duration",
+    "volume": "volume",
+    "sets": "sets",
+    "records": "New records",
+    "noRecords": "No new records. Holding steady in a deficit is a win too.",
+    "bodyweight": "Bodyweight (optional)",
+    "notes": "Notes",
+    "notesPlaceholder": "How did it go?",
+    "save": "Save workout"
+  },
+  "noActive": "No active workout."
+}

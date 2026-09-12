@@ -1,0 +1,33 @@
+{
+  "cancel": "Otkaži",
+  "save": "Sačuvaj",
+  "delete": "Obriši",
+  "edit": "Izmeni",
+  "confirm": "Potvrdi",
+  "back": "Nazad",
+  "done": "Gotovo",
+  "add": "Dodaj",
+  "close": "Zatvori",
+  "ok": "U redu",
+  "loading": "Učitavanje…",
+  "notFound": "Nije pronađeno",
+  "none": "—",
+  "units": { "kg": "kg", "lb": "lb", "cm": "cm", "sec": "s", "min": "min", "tonnes": "t" },
+  "bodyweight": "sopstvena težina",
+  "today": "danas",
+  "yesterday": "juče",
+  "daysAgo_one": "pre {{count}} dan",
+  "daysAgo_few": "pre {{count}} dana",
+  "daysAgo_other": "pre {{count}} dana",
+  "tabs": { "today": "Danas", "plan": "Plan", "progress": "Napredak", "more": "Više" },
+  "muscles": {
+    "chest": "Grudi", "back": "Leđa", "quads": "Kvadriceps", "hamstrings": "Zadnja loža", "glutes": "Gluteusi",
+    "shoulders": "Ramena", "biceps": "Biceps", "triceps": "Triceps", "calves": "Listovi", "core": "Trbuh"
+  },
+  "equipment": {
+    "machine": "mašina", "dumbbell": "bučice", "barbell": "šipka", "cable": "kabl", "trap bar": "trap bar",
+    "body only": "sopstvena težina", "other": "ostalo"
+  },
+  "cardioTypes": { "swim": "Bazen", "zone2": "Zona 2", "walk": "Hodanje", "hiit": "HIIT" },
+  "errors": { "generic": "Nešto nije u redu. Pokušaj ponovo." }
+}

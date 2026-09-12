@@ -1,0 +1,24 @@
+{
+  "title": "Moj plan",
+  "subtitle": "{{program}} · rotacija {{rotation}}",
+  "scheme": "{{sets}} × {{repsMin}}–{{repsMax}}",
+  "schemeFixed": "{{sets}} × {{reps}}",
+  "perSide": "po strani",
+  "rir": "RIR {{value}}",
+  "rirRange": "RIR {{min}}–{{max}}",
+  "rest": "pauza {{value}}s",
+  "restRange": "pauza {{min}}–{{max}}s",
+  "next": "SLEDEĆI",
+  "startThis": "Počni ovaj trening",
+  "edit": "Uredi plan",
+  "noWorkouts": "Program nema treninge.",
+  "noExercises": "Ovaj trening nema vežbi.",
+  "warmup": {
+    "title": "Zagrevanje · 8 min",
+    "steps": [
+      "5 min bicikl / veslač / brzo hodanje pod nagibom",
+      "2 min dinamičke mobilnosti: ramena, mahovi nogom, mačka-kamila",
+      "2 lagane serije prve vežbe: ~50% i ~75% radne kilaže × 5"
+    ]
+  }
+}

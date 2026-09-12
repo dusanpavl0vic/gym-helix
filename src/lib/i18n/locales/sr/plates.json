@@ -1,0 +1,10 @@
+{
+  "title": "Kalkulator tegova",
+  "target": "Ciljana kilaža",
+  "bar": "Šipka",
+  "perSide": "PO STRANI",
+  "total": "Ukupno na šipki",
+  "remainder": "Ne može tačno. Najbliže je {{value}} kg.",
+  "belowBar": "Kilaža je manja od težine šipke.",
+  "onlyBar": "Samo šipka"
+}
