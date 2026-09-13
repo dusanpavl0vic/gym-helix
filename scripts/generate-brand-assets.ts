@@ -1,44 +1,39 @@
 /**
- * Renders the logo into every icon/splash/favicon asset used by app.json, plus README branding.
+ * Renders the Helix logo (assets/brand/helix-logo.svg) into every icon/splash/favicon asset used by app.json,
+ * the README banner, and the SVG string used by the in-app Logo component.
  *
  * Run: npm run generate:brand
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { Resvg } from '@resvg/resvg-js';
 
-import {
-  BRAND_COLOR_ROLES, ICON_ACCENT_CIRCLE, ICON_CANVAS, LOGO_DUMBBELL, LOGO_RING, MARK_SCALE,
-} from '../src/constants/brand.ts';
+import { BRAND_COLOR_ROLES, ICON_ACCENT_CIRCLE, ICON_CANVAS, LOGO_SCALE, LOGO_SOURCE_FILE } from '../src/constants/brand.ts';
+import { APP_NAME } from '../src/constants/config.ts';
 import { colors } from '../src/constants/colors.ts';
+import { innerSvg, monochromeSvg, prefixSvgIds, stripSvgSize, viewBoxOf } from '../src/helpers/brand/prepareLogoSvg.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const images = join(root, 'assets', 'images');
 const brandDir = join(root, 'assets', 'brand');
+const logoModule = join(root, 'src', 'components', 'common', 'Logo', 'logo.generated.ts');
 const fontFiles = [
   join(root, 'node_modules/@expo-google-fonts/manrope/800ExtraBold/Manrope_800ExtraBold.ttf'),
   join(root, 'node_modules/@expo-google-fonts/space-mono/700Bold/SpaceMono_700Bold.ttf'),
 ];
 
 const role = (key: keyof typeof BRAND_COLOR_ROLES) => colors[BRAND_COLOR_ROLES[key]];
+const source = stripSvgSize(readFileSync(join(root, LOGO_SOURCE_FILE), 'utf8'));
+const viewBox = viewBoxOf(source);
 
-interface MarkOptions {
-  cx: number;
-  cy: number;
-  scale: number;
-  mono?: string;
-}
-
-function mark({ cx, cy, scale, mono }: MarkOptions): string {
-  const dumbbellFill = mono ?? role('dumbbell');
-  const ringStroke = mono ?? role('ring');
-  const rects = LOGO_DUMBBELL.map(
-    (r) => `<rect x="${r.x}" y="${r.y}" width="${r.width}" height="${r.height}" rx="${r.rx}" fill="${dumbbellFill}"/>`,
-  ).join('');
-  const ring = `<path d="${LOGO_RING.path}" fill="none" stroke="${ringStroke}" stroke-width="${LOGO_RING.stroke}" stroke-linecap="round"/>`;
-  return `<g transform="translate(${cx} ${cy}) scale(${scale})">${rects}${ring}</g>`;
+let placement = 0;
+/** Places the logo in a square box centered at (cx, cy). */
+function logo(cx: number, cy: number, size: number, mono = false): string {
+  placement += 1;
+  const content = prefixSvgIds(innerSvg(mono ? monochromeSvg(source, role('monochrome')) : source), `l${placement}-`);
+  return `<svg x="${cx - size / 2}" y="${cy - size / 2}" width="${size}" height="${size}" viewBox="${viewBox}" fill="none">${content}</svg>`;
 }
 
 const svg = (width: number, height: number, body: string) =>
@@ -48,40 +43,27 @@ const background = (size: number, radius = 0) =>
   `<rect width="${size}" height="${size}" rx="${radius}" fill="${role('background')}"/>` +
   `<circle cx="${size * ICON_ACCENT_CIRCLE.cx}" cy="${size * ICON_ACCENT_CIRCLE.cy}" r="${size * ICON_ACCENT_CIRCLE.r}" fill="${role('accent')}"/>`;
 
-function writePng(path: string, markup: string, width?: number) {
-  const renderer = new Resvg(markup, {
-    fitTo: width ? { mode: 'width', value: width } : { mode: 'original' },
-    font: { fontFiles, loadSystemFonts: false, defaultFontFamily: 'Manrope' },
-  });
+function writePng(path: string, markup: string) {
+  const renderer = new Resvg(markup, { fitTo: { mode: 'original' }, font: { fontFiles, loadSystemFonts: false, defaultFontFamily: 'Manrope' } });
   writeFileSync(path, renderer.render().asPng());
   console.log(`✓ ${path.replace(`${root}/`, '')}`);
 }
 
 function main() {
-  mkdirSync(brandDir, { recursive: true });
   const size = ICON_CANVAS;
   const center = size / 2;
 
-  const icon = svg(size, size, background(size) + mark({ cx: center, cy: center, scale: MARK_SCALE.icon }));
-  writePng(join(images, 'icon.png'), icon);
-  writeFileSync(join(brandDir, 'logo.svg'), icon);
-
-  writePng(join(images, 'android-icon-foreground.png'), svg(size, size, mark({ cx: center, cy: center, scale: MARK_SCALE.adaptiveForeground })));
+  writePng(join(images, 'icon.png'), svg(size, size, background(size) + logo(center, center, size * LOGO_SCALE.icon)));
+  writePng(join(images, 'android-icon-foreground.png'), svg(size, size, logo(center, center, size * LOGO_SCALE.adaptiveForeground)));
   writePng(join(images, 'android-icon-background.png'), svg(size, size, background(size)));
-  writePng(
-    join(images, 'android-icon-monochrome.png'),
-    svg(size, size, mark({ cx: center, cy: center, scale: MARK_SCALE.adaptiveForeground, mono: colors.white })),
-  );
-
-  const splash = svg(size, size, mark({ cx: center, cy: center, scale: MARK_SCALE.splash }));
-  writePng(join(images, 'splash-icon.png'), splash);
-  writeFileSync(join(brandDir, 'logo-mark.svg'), svg(size, size, mark({ cx: center, cy: center, scale: MARK_SCALE.icon })));
+  writePng(join(images, 'android-icon-monochrome.png'), svg(size, size, logo(center, center, size * LOGO_SCALE.adaptiveForeground, true)));
+  writePng(join(images, 'splash-icon.png'), svg(size, size, logo(center, center, size * LOGO_SCALE.splash)));
 
   const faviconSize = 48;
+  const faviconRadius = 11;
   writePng(
     join(images, 'favicon.png'),
-    svg(faviconSize, faviconSize, `<rect width="${faviconSize}" height="${faviconSize}" rx="11" fill="${role('background')}"/>` +
-      mark({ cx: faviconSize / 2, cy: faviconSize / 2, scale: MARK_SCALE.favicon })),
+    svg(faviconSize, faviconSize, `<rect width="${faviconSize}" height="${faviconSize}" rx="${faviconRadius}" fill="${role('background')}"/>` + logo(faviconSize / 2, faviconSize / 2, faviconSize * LOGO_SCALE.favicon)),
   );
 
   const bannerW = 1600;
@@ -91,12 +73,17 @@ function main() {
     bannerH,
     `<rect width="${bannerW}" height="${bannerH}" rx="64" fill="${role('background')}"/>` +
       `<circle cx="${bannerW - 120}" cy="60" r="220" fill="${role('accent')}"/>` +
-      mark({ cx: 250, cy: bannerH / 2, scale: 1.45 }) +
-      `<text x="450" y="235" font-family="Manrope" font-weight="800" font-size="138" letter-spacing="-4" fill="${role('wordmark')}">GymPersonal</text>` +
-      `<text x="456" y="315" font-family="Space Mono" font-weight="700" font-size="40" letter-spacing="4" fill="${role('tagline')}">TRENING PLANER · OFFLINE</text>`,
+      logo(250, bannerH / 2, 300) +
+      `<text x="450" y="245" font-family="Manrope" font-weight="800" font-size="160" letter-spacing="-5" fill="${role('wordmark')}">${APP_NAME}</text>` +
+      `<text x="458" y="320" font-family="Space Mono" font-weight="700" font-size="40" letter-spacing="4" fill="${role('tagline')}">TRENING PLANER · OFFLINE</text>`,
   );
   writePng(join(brandDir, 'wordmark.png'), banner);
-  writeFileSync(join(brandDir, 'wordmark.svg'), banner);
+
+  writeFileSync(
+    logoModule,
+    `/* eslint-disable */\n// AUTO-GENERATED by scripts/generate-brand-assets.ts from ${LOGO_SOURCE_FILE} — do not edit by hand.\n\nexport const LOGO_XML = ${JSON.stringify(source.replace(/>\s+</g, '><'))};\n`,
+  );
+  console.log(`✓ ${logoModule.replace(`${root}/`, '')}`);
 }
 
 main();

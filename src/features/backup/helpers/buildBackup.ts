@@ -1,10 +1,10 @@
-import { BACKUP_FORMAT_VERSION } from '@/constants/storage';
+import { BACKUP_APP_ID, BACKUP_FORMAT_VERSION } from '@/constants/storage';
 import type { RootState } from '@/store';
 import type { BackupFile } from '@/types/backup';
 
 export function buildBackup(state: RootState, exportedAt: string): BackupFile {
   return {
-    app: 'gym-personal',
+    app: BACKUP_APP_ID,
     version: BACKUP_FORMAT_VERSION,
     exportedAt,
     state: {

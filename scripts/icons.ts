@@ -66,7 +66,7 @@ function writeDocs() {
     const hex = colors[spec.color as keyof typeof colors];
     return `| \`${name}.svg\` | [${spec.tabler}](${tablerPage(spec.tabler)}) | ${spec.usage} | ${spec.color} \`${hex}\` |`;
   });
-  const content = `# Ikonice — GymPersonal
+  const content = `# Ikonice — Helix
 
 Aplikacija koristi **${names.length}** ikonica. Početni set je [Tabler Icons](https://tabler.io/icons) ${TABLER_VERSION}
 (MIT licenca, stil **outline**, 24×24, debljina linije 2).

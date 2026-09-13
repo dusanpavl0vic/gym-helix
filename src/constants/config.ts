@@ -1,4 +1,4 @@
-export const APP_NAME = 'GymPersonal';
+export const APP_NAME = 'Helix';
 export const DEFAULT_LANGUAGE = 'sr';
 export const SUPPORTED_LANGUAGES = ['sr', 'en'] as const;
 export type AppLanguage = (typeof SUPPORTED_LANGUAGES)[number];

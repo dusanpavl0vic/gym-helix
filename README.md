@@ -1,6 +1,6 @@
-<p align="center"><img src="assets/brand/wordmark.png" alt="GymPersonal" width="560"></p>
+<p align="center"><img src="assets/brand/wordmark.png" alt="Helix" width="560"></p>
 
-# GymPersonal
+# Helix
 
 Offline trening planer (Expo, React Native, TypeScript). Rotacija Full Body A → B → C bez vezivanja za dane u nedelji,
 double progression, RIR, deload, kardio, telesne mere, grafici napretka i backup — sve lokalno na telefonu.

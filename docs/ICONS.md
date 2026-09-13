@@ -1,4 +1,4 @@
-# Ikonice — GymPersonal
+# Ikonice — Helix
 
 Aplikacija koristi **54** ikonica. Početni set je [Tabler Icons](https://tabler.io/icons) 3.46.0
 (MIT licenca, stil **outline**, 24×24, debljina linije 2).

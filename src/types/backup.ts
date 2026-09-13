@@ -42,7 +42,7 @@ export interface BackupPersistedState {
 }
 
 export interface BackupFile {
-  app: 'gym-personal';
+  app: string;
   version: number;
   exportedAt: string;
   state: BackupPersistedState;
