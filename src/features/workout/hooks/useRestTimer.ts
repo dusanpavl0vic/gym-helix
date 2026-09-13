@@ -10,12 +10,13 @@ import { playRestSound, playTickSound } from '@/lib/feedback/sound';
 import {
   cancelRestNotification,
   ensureNotificationPermission,
+  notificationsAvailable,
   scheduleRestEnd,
   setSystemSoundInForeground,
 } from '@/lib/notifications/restNotifications';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
-import { restRemainingSec } from '../helpers/rest';
+import { effectiveRestSound, restRemainingSec } from '../helpers/rest';
 import { restCleared, restExtended } from '../store/activeSessionSlice';
 import { selectRest } from '../store/activeSessionSelectors';
 
@@ -32,10 +33,11 @@ export function useRestTimer(nextName: string) {
   const lastTick = useRef<number | null>(null);
 
   const remainingSec = rest ? restRemainingSec(rest.endsAt, now) : 0;
+  const soundMode = effectiveRestSound(settings.restSound, notificationsAvailable);
 
   useEffect(() => {
-    setSystemSoundInForeground(settings.restSound === 'system');
-  }, [settings.restSound]);
+    setSystemSoundInForeground(soundMode === 'system');
+  }, [soundMode]);
 
   // Schedule a local notification so the alert also fires with the screen locked.
   useEffect(() => {
@@ -43,14 +45,14 @@ export function useRestTimer(nextName: string) {
     const previous = notificationId.current;
     notificationId.current = null;
     cancelRestNotification(previous);
-    if (!rest || (!settings.notifications && settings.restSound !== 'system')) return undefined;
+    if (!rest || !notificationsAvailable || (!settings.notifications && soundMode !== 'system')) return undefined;
     (async () => {
       if (!(await ensureNotificationPermission()) || cancelled) return;
       const id = await scheduleRestEnd(
         rest.endsAt,
         t('rest.notificationTitle'),
         t('rest.notificationBody', { name: nextName }),
-        settings.restSound !== 'off',
+        soundMode !== 'off',
       );
       if (cancelled) cancelRestNotification(id);
       else notificationId.current = id;
@@ -58,7 +60,7 @@ export function useRestTimer(nextName: string) {
     return () => {
       cancelled = true;
     };
-  }, [rest?.endsAt, settings.notifications, settings.restSound]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [rest?.endsAt, settings.notifications, soundMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Countdown ticks and the end-of-rest alert.
   useEffect(() => {
@@ -70,17 +72,17 @@ export function useRestTimer(nextName: string) {
       if (settings.countdownTicks && remainingSec <= animation.countdownTickSec && lastTick.current !== remainingSec) {
         lastTick.current = remainingSec;
         tickHaptic();
-        if (settings.restSound === 'app') playTickSound();
+        if (soundMode === 'app') playTickSound();
       }
       return;
     }
     const lateBy = now - rest.endsAt;
     if (lateBy < STALE_ALERT_MS) {
       if (settings.vibration) restEndVibration();
-      if (settings.restSound === 'app') playRestSound();
+      if (soundMode === 'app') playRestSound();
     }
     dispatch(restCleared());
-  }, [remainingSec, rest, now, settings, dispatch]);
+  }, [remainingSec, rest, now, settings, soundMode, dispatch]);
 
   const skip = () => {
     cancelRestNotification(notificationId.current);

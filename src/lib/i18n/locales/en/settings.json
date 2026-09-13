@@ -45,5 +45,6 @@
   },
   "restSoundHint": "System sound uses your phone notification sound.",
   "countdownTicks": "Ticks in the last 3 seconds",
-  "testSound": "Test sound"
+  "testSound": "Test sound",
+  "notificationsUnavailable": "Notifications and system sound do not work in Expo Go, so the app sound is used. They work normally in the APK and development builds."
 }

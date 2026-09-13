@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
   group: { gap: spacing.xl },
   grid: { flexDirection: 'row', gap: spacing.lg },
   hint: { ...typography.small, color: colors.muted },
+  warning: { ...typography.small, color: colors.danger },
   plates: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   plate: { minWidth: 56, minHeight: 44, paddingHorizontal: spacing.lg, borderRadius: radii.md, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.paperWarm, alignItems: 'center', justifyContent: 'center' },
   plateOn: { backgroundColor: colors.forest, borderColor: colors.forest },

@@ -45,5 +45,6 @@
   },
   "restSoundHint": "Sistemski zvuk koristi zvuk obaveštenja telefona.",
   "countdownTicks": "Otkucaji u poslednje 3 sekunde",
-  "testSound": "Probaj zvuk"
+  "testSound": "Probaj zvuk",
+  "notificationsUnavailable": "U Expo Go-u obaveštenja i sistemski zvuk ne rade, pa se koristi zvuk aplikacije. U APK-u i development build-u rade normalno."
 }

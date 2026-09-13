@@ -25,7 +25,7 @@ const REST_STEP = 15;
 
 export function SettingsScreen() {
   const router = useRouter();
-  const { settings, t, update, setLanguage, togglePlate, testSound } = useSettings();
+  const { settings, t, notificationsAvailable, update, setLanguage, togglePlate, testSound } = useSettings();
 
   return (
     <ScreenContainer>
@@ -47,6 +47,7 @@ export function SettingsScreen() {
           options={REST_SOUND_MODES.map((m) => ({ value: m, label: t(`restSoundModes.${m}`) }))}
         />
         <Text style={styles.hint}>{t('restSoundHint')}</Text>
+        {notificationsAvailable ? null : <Text style={styles.warning}>{t('notificationsUnavailable')}</Text>}
         <SettingRow label={t('countdownTicks')} value={settings.countdownTicks} onChange={(countdownTicks) => update({ countdownTicks })} />
         <SettingRow label={t('vibration')} value={settings.vibration} onChange={(vibration) => update({ vibration })} />
         <SettingRow label={t('notifications')} value={settings.notifications} onChange={(notifications) => update({ notifications })} />
