@@ -3,7 +3,6 @@ import { ScrollView, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { EmptyState } from '@/components/common/EmptyState';
 import { ImageGallery } from '@/components/common/ImageGallery';
 import { SectionHeader } from '@/components/common/SectionHeader';
@@ -30,34 +29,30 @@ export function ExerciseDetailScreen() {
           images={detail.exercise?.images ?? []}
           height={metrics.detailImageHeight}
           placeholderLabel={t('exercises:imagePlaceholder')}
-          overlay={<IconButton glyph="‹" variant="cream" onPress={detail.back} accessibilityLabel={t('common:back')} style={styles.back} />}
+          overlay={<IconButton icon="back" variant="cream" onPress={detail.back} accessibilityLabel={t('common:back')} style={styles.back} />}
         />
         <View style={styles.body}>
-          <AnimatedEntry index={0} style={styles.titleBlock}>
+          <View style={styles.titleBlock}>
             <Text style={styles.name}>{detail.name}</Text>
             <MuscleChips muscles={detail.muscles} />
             {detail.target ? <Text style={styles.target}>{`${t('exercises:detail.target')}: ${detail.target}`}</Text> : null}
-          </AnimatedEntry>
+          </View>
           {detail.canChangePhoto ? (
             <View style={styles.photoRow}>
-              <Button label={`${t('exercises:detail.changePhoto')} · ${t('exercises:picker.gallery')}`} onPress={() => detail.changePhoto('gallery')} variant="outline" flex={1} />
-              <Button label={t('exercises:picker.camera')} onPress={() => detail.changePhoto('camera')} variant="outline" flex={0.6} />
+              <Button label={t('exercises:picker.gallery')} icon="gallery" onPress={() => detail.changePhoto('gallery')} variant="outline" flex={1} />
+              <Button label={t('exercises:picker.camera')} icon="camera" onPress={() => detail.changePhoto('camera')} variant="outline" flex={1} />
             </View>
           ) : null}
-          <AnimatedEntry index={1}>
-            <RecordCard
-              title={t('exercises:detail.record')}
-              heaviest={detail.record.heaviest}
-              heaviestLabel={t('exercises:detail.heaviest')}
-              e1rm={detail.record.e1rm}
-              e1rmLabel={t('exercises:detail.e1rm')}
-            />
-          </AnimatedEntry>
-          <AnimatedEntry index={2}>
-            <ExerciseProgressChart exerciseId={id} exerciseName={detail.name} />
-          </AnimatedEntry>
+          <RecordCard
+            title={t('exercises:detail.record')}
+            heaviest={detail.record.heaviest}
+            heaviestLabel={t('exercises:detail.heaviest')}
+            e1rm={detail.record.e1rm}
+            e1rmLabel={t('exercises:detail.e1rm')}
+          />
+          <ExerciseProgressChart exerciseId={id} exerciseName={detail.name} />
           {detail.instructions.length > 0 ? (
-            <AnimatedEntry index={3} style={styles.section}>
+            <View style={styles.section}>
               <SectionHeader title={t('exercises:detail.instructions')} />
               {detail.instructions.map((step, i) => (
                 <View key={step} style={styles.step}>
@@ -65,9 +60,9 @@ export function ExerciseDetailScreen() {
                   <Text style={styles.stepText}>{step}</Text>
                 </View>
               ))}
-            </AnimatedEntry>
+            </View>
           ) : null}
-          <AnimatedEntry index={4} style={styles.section}>
+          <View style={styles.section}>
             <SectionHeader title={t('exercises:detail.history')} />
             {detail.log.length === 0 ? <EmptyState message={t('exercises:detail.noHistory')} /> : null}
             {detail.log.map((row) => (
@@ -77,7 +72,7 @@ export function ExerciseDetailScreen() {
                 <Text style={styles.logTop}>{row.top}</Text>
               </View>
             ))}
-          </AnimatedEntry>
+          </View>
         </View>
       </ScrollView>
     </View>

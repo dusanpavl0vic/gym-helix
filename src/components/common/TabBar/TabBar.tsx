@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { TAB_ICONS } from '@/constants/icons';
 import { spacing } from '@/constants/spacing';
 
 import { TabBarItem } from '../TabBarItem';
@@ -10,7 +11,7 @@ import type { TabBarProps } from './TabBar.types';
 export function TabBar({ state, descriptors, navigation }: TabBarProps) {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, spacing.md) + spacing.lg }]}>
+    <View style={[styles.bar, { paddingBottom: Math.max(insets.bottom, spacing.md) }]}>
       {state.routes.map((route, index) => {
         const focused = state.index === index;
         const options = descriptors[route.key].options;
@@ -19,6 +20,7 @@ export function TabBar({ state, descriptors, navigation }: TabBarProps) {
           <TabBarItem
             key={route.key}
             label={label}
+            icon={TAB_ICONS[route.name as keyof typeof TAB_ICONS] ?? 'tab-more'}
             focused={focused}
             onPress={() => {
               const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });

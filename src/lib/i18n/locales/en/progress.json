@@ -17,7 +17,12 @@
   "history": {
     "empty": "No workouts this month.",
     "sessionMeta": "{{sets}} sets · {{minutes}} min · {{volume}} t",
-    "cardioMeta": "{{minutes}} min"
+    "cardioMeta": "{{minutes}} min",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "legendStrength": "workout",
+    "legendCardio": "cardio",
+    "cardioMetaDistance": "{{minutes}} min · {{distance}} km"
   },
   "session": {
     "title": "Workout",

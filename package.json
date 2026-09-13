@@ -65,12 +65,15 @@
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "fetch:exercises": "node --experimental-strip-types scripts/fetch-exercises.ts",
-    "generate:brand": "node --experimental-strip-types scripts/generate-brand-assets.ts"
+    "generate:brand": "node --experimental-strip-types scripts/generate-brand-assets.ts",
+    "icons": "node --experimental-strip-types scripts/icons.ts",
+    "generate:sounds": "node --experimental-strip-types scripts/generate-sounds.ts"
   },
   "private": true,
   "jest": {
     "preset": "jest-expo",
     "moduleNameMapper": {
+      "^immer$": "<rootDir>/node_modules/immer/dist/cjs/index.js",
       "^@/assets/(.*)$": "<rootDir>/assets/$1",
       "^@/(.*)$": "<rootDir>/src/$1"
     },

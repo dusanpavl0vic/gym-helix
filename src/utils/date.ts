@@ -18,3 +18,8 @@ export function lastNDays(n: number, now: Date = new Date()): Date[] {
 export function isSameDayIso(iso: string, day: Date): boolean {
   return differenceInCalendarDays(startOfDay(new Date(iso)), startOfDay(day)) === 0;
 }
+
+/** 2024-01-01 was a Monday, so day N of that month has ISO weekday N (1 = Monday … 7 = Sunday). */
+const REFERENCE_MONDAY = { year: 2024, month: 0 } as const;
+
+export const dateForWeekday = (weekday: number): Date => new Date(REFERENCE_MONDAY.year, REFERENCE_MONDAY.month, weekday);

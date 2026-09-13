@@ -15,8 +15,8 @@ export const styles = StyleSheet.create({
   switchLabel: { ...typography.bodySemibold, color: colors.ink },
   label: { ...typography.monoMicro, color: colors.muted },
   alternatives: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
-  altChip: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm, backgroundColor: colors.mint, borderRadius: radii.pill, paddingLeft: spacing.xl, paddingRight: spacing.xs, minHeight: 36 },
-  altText: { ...typography.chip, fontSize: 12, color: colors.forest },
-  altRemove: { width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center' },
-  altRemoveText: { ...typography.bodyStrong, color: colors.forest },
+  altChip: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs, backgroundColor: colors.mint, borderRadius: radii.pill, paddingLeft: spacing.xl, paddingRight: spacing.xs, minHeight: 36 },
+  altText: { ...typography.chip, fontSize: 12, lineHeight: 16, color: colors.forest },
+  altRemove: { width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center' },
+  footer: { flexDirection: 'row', gap: spacing.md },
 });

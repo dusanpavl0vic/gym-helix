@@ -8,6 +8,7 @@ import { exerciseSeries } from '@/features/progress/helpers/analytics';
 import { selectSessions } from '@/features/progress/store/historySelectors';
 import { formatSetsShort } from '@/features/workout/helpers/performance';
 import { useFormatters } from '@/hooks/useFormatters';
+import { usePermissionPrompt } from '@/hooks/usePermissionPrompt';
 import { pickExercisePhoto, type PhotoSource } from '@/lib/files/imagePicker';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 
@@ -22,6 +23,7 @@ export function useExerciseDetail(exerciseId: string) {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const fmt = useFormatters();
+  const promptPermission = usePermissionPrompt();
   const { exercise, name, instructions, muscles } = useExercise(exerciseId);
   const sessions = useAppSelector(selectSessions);
   const program = useAppSelector(selectActiveProgram);
@@ -71,6 +73,7 @@ export function useExerciseDetail(exerciseId: string) {
     log,
     canChangePhoto: Boolean(exercise?.isCustom),
     changePhoto: async (source: PhotoSource) => {
+      if (!(await promptPermission(source === 'camera' ? 'camera' : 'photos'))) return;
       const uri = await pickExercisePhoto(source, exerciseId);
       if (uri) dispatch(exercisePhotoSet({ exerciseId, uri }));
     },

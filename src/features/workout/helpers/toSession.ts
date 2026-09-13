@@ -24,7 +24,7 @@ export function toSession(active: ActiveSession, finishedAt: string, extra: { bo
             .filter(({ set }) => set.done)
             .map(({ set, setIndex }) => ({
               setIndex,
-              weightKg: set.weightKg,
+              weightKg: set.weightKg ?? 0,
               reps: set.reps,
               rir: set.rir,
               completedAt: set.completedAt ?? finishedAt,

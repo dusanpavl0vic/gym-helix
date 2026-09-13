@@ -15,7 +15,9 @@ export function SegmentedControl({ items, selectedKey, onSelect }: SegmentedCont
             accessibilityState={{ selected }}
             onPress={() => onSelect(item.key)}
             style={[styles.item, selected && styles.selected]}>
-            <Text style={[styles.label, selected && styles.labelSelected]}>{item.label}</Text>
+            <Text style={[styles.label, selected && styles.labelSelected]} numberOfLines={2} adjustsFontSizeToFit minimumFontScale={0.8}>
+              {item.label}
+            </Text>
           </Pressable>
         );
       })}

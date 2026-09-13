@@ -47,4 +47,12 @@ export const CATALOG: CatalogEntry[] = [
   { id: 'walkingLunge', nameEn: 'Walking Lunge', sourceId: 'Bodyweight_Walking_Lunge', kind: 'machine', equipment: 'dumbbell', primaryMuscles: ['quads', 'glutes'], secondaryMuscles: ['hamstrings'] },
   { id: 'narrowStanceLegPress', nameEn: 'Narrow Stance Leg Press', kind: 'heavyCompound', equipment: 'machine', primaryMuscles: ['quads'], secondaryMuscles: ['glutes'] },
   { id: 'plank', nameEn: 'Plank', kind: 'isolation', equipment: 'body only', primaryMuscles: ['core'], secondaryMuscles: [] },
+  // Recomp Upper/Lower 4+1
+  { id: 'pullUp', nameEn: 'Pull-Up', sourceId: 'Pullups', kind: 'heavyCompound', equipment: 'body only', primaryMuscles: ['back'], secondaryMuscles: ['biceps'] },
+  { id: 'latPulldown', nameEn: 'Lat Pulldown', sourceId: 'Full_Range-Of-Motion_Lat_Pulldown', kind: 'machine', equipment: 'cable', primaryMuscles: ['back'], secondaryMuscles: ['biceps'] },
+  { id: 'seatedCableRow', nameEn: 'Seated Cable Row', sourceId: 'Seated_Cable_Rows', kind: 'machine', equipment: 'cable', primaryMuscles: ['back'], secondaryMuscles: ['biceps', 'shoulders'] },
+  { id: 'overheadCableTricepsExtension', nameEn: 'Overhead Cable Triceps Extension', sourceId: 'Cable_Rope_Overhead_Triceps_Extension', kind: 'isolation', equipment: 'cable', primaryMuscles: ['triceps'], secondaryMuscles: [] },
+  { id: 'seatedLegCurl', nameEn: 'Seated Leg Curl', sourceId: 'Seated_Leg_Curl', kind: 'isolation', equipment: 'machine', primaryMuscles: ['hamstrings'], secondaryMuscles: ['calves'] },
+  { id: 'seatedCalfRaise', nameEn: 'Seated Calf Raise', sourceId: 'Seated_Calf_Raise', kind: 'isolation', equipment: 'machine', primaryMuscles: ['calves'], secondaryMuscles: [] },
+  { id: 'hangingLegRaise', nameEn: 'Hanging Leg Raise', sourceId: 'Hanging_Leg_Raise', kind: 'isolation', equipment: 'body only', primaryMuscles: ['core'], secondaryMuscles: [] },
 ];

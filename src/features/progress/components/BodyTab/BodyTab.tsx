@@ -1,7 +1,6 @@
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { ChartCard } from '@/components/common/ChartCard';
 import { EmptyState } from '@/components/common/EmptyState';
 import { LineChart } from '@/components/common/LineChart';
@@ -17,20 +16,18 @@ export function BodyTab() {
 
   return (
     <View style={styles.wrap}>
-      <Button label={t('body:add')} onPress={body.openBody} variant="outline" />
+      <Button label={t('body:add')} icon="measure" onPress={body.openBody} variant="outline" />
       {body.isEmpty ? <EmptyState message={t('body:empty')} /> : null}
-      {body.charts.map((chart, i) => (
-        <AnimatedEntry key={chart.field} index={i}>
-          <ChartCard title={chart.title} value={chart.valueLabel} hint={chart.hint}>
-            <LineChart
-              points={chart.points}
-              formatY={(v) => formatWeight(Math.round(v * 10) / 10)}
-              formatX={body.formatX}
-              emptyLabel={t('progress:chartEmpty')}
-              accessibilityLabel={chart.title}
-            />
-          </ChartCard>
-        </AnimatedEntry>
+      {body.charts.map((chart) => (
+        <ChartCard key={chart.field} title={chart.title} value={chart.valueLabel} hint={chart.hint}>
+          <LineChart
+            points={chart.points}
+            formatY={(v) => formatWeight(Math.round(v * 10) / 10)}
+            formatX={body.formatX}
+            emptyLabel={t('progress:chartEmpty')}
+            accessibilityLabel={chart.title}
+          />
+        </ChartCard>
       ))}
     </View>
   );

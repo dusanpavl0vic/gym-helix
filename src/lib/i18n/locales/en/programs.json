@@ -46,18 +46,41 @@
     "addAlternative": "+ Alternative",
     "perSide": "Per side / leg",
     "remove": "Remove exercise",
-    "estimate": "~{{minutes}} min · {{sets}} sets"
+    "estimate": "~{{minutes}} min · {{sets}} sets",
+    "increment": "Weight increase when every set hits the top (kg)"
   },
   "seed": {
-    "name": "Recomp Full Body A/B/C",
+    "name": "Recomp — Upper/Lower 4+1",
+    "goal": "Recomposition · 4 strength days + cardio",
     "workouts": {
-      "FB_A": { "name": "Full Body A", "focus": "quads / push" },
-      "FB_B": { "name": "Full Body B", "focus": "hamstrings / pull" },
-      "FB_C": { "name": "Full Body C", "focus": "single-leg / upper" }
+      "UPPER_A": {
+        "name": "Upper A",
+        "focus": "upper body · push emphasis"
+      },
+      "LOWER_A": {
+        "name": "Lower A",
+        "focus": "legs · quads"
+      },
+      "UPPER_B": {
+        "name": "Upper B",
+        "focus": "upper body · pull emphasis"
+      },
+      "LOWER_B": {
+        "name": "Lower B",
+        "focus": "legs · hamstrings and glutes"
+      }
     },
     "notes": {
-      "neverToFailure": "Never to failure.",
-      "trapBar": "Never to failure. No trap bar: hip thrust 3 × 8–12."
+      "bench30": "Bench at 30°.",
+      "calfPause": "Pause 1 s at the bottom.",
+      "pullUpWeighted": "Add weight when possible. Swap: lat pulldown."
+    },
+    "week": {
+      "title": "Suggested week",
+      "hint": "Just a suggestion — workouts rotate in order, whenever you go.",
+      "tempo": "Tempo: 2 s down, no pause, explosive up. RIR 2 unless noted.",
+      "rest": "Rest · 8–10k steps, optionally a 20–30 min easy walk",
+      "cardio": "Cardio · 40–60 min zone 2 run or 30–45 min swim"
     }
   }
 }

@@ -1,1 +1,0 @@
-export { WorkoutScreen } from './WorkoutScreen';

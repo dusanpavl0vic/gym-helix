@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import { PressableScale } from '@/components/common/PressableScale';
 import { Button } from '@/components/ui/Button';
 import { Chip } from '@/components/ui/Chip';
+import { IconButton } from '@/components/ui/IconButton';
 
 import { styles } from './ProgramCard.styles';
 import type { ProgramCardProps } from './ProgramCard.types';
@@ -21,10 +22,10 @@ export function ProgramCard({ name, subtitle, isActive, isDefault, labels, canDe
         <Text style={styles.subtitle}>{subtitle}</Text>
       </PressableScale>
       <View style={styles.actions}>
-        {!isActive ? <Button label={labels.setActive} onPress={onActivate} flex={1} /> : null}
-        <Button label={labels.edit} onPress={onOpen} variant="outline" flex={1} />
-        <Button label={labels.duplicate} onPress={onDuplicate} variant="outline" flex={1} />
-        {canDelete ? <Button label={labels.delete} onPress={onDelete} variant="danger" flex={1} /> : null}
+        {isActive ? <View style={styles.spacer} /> : <Button label={labels.setActive} icon="check" onPress={onActivate} style={styles.primary} />}
+        <IconButton icon="edit" variant="mint" size="lg" onPress={onOpen} accessibilityLabel={labels.edit} />
+        <IconButton icon="copy" variant="mint" size="lg" onPress={onDuplicate} accessibilityLabel={labels.duplicate} />
+        {canDelete ? <IconButton icon="delete" color="danger" size="lg" onPress={onDelete} accessibilityLabel={labels.delete} /> : null}
       </View>
     </View>
   );

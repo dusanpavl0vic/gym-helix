@@ -1,26 +1,14 @@
 import { DELOAD } from '@/constants/training';
-import type { PlannedExercise, RotationState, Workout } from '@/types/domain';
+import type { PlannedExercise, Workout } from '@/types/domain';
 
-export function isDeloadDue(state: RotationState, rotationLength: number): boolean {
-  if (state.deloadActive || rotationLength <= 0) return false;
-  return state.sessionsSinceDeload >= DELOAD.afterCycles * rotationLength;
-}
+/** Every 7th training week (rotation cycle) is a deload week. */
+export const isDeloadWeek = (cycleNumber: number): boolean => cycleNumber > 0 && cycleNumber % DELOAD.everyWeeks === 0;
 
-export function startDeload(state: RotationState, rotationLength: number): RotationState {
-  return { ...state, deloadActive: true, deloadRemaining: Math.max(1, rotationLength) };
-}
-
-export function dismissDeload(state: RotationState): RotationState {
-  return { ...state, deloadActive: false, deloadRemaining: 0, sessionsSinceDeload: 0 };
-}
+export const deloadSetCount = (sets: number): number =>
+  Math.min(sets, Math.max(DELOAD.minSets, Math.floor(sets * DELOAD.setsFactor)));
 
 export function applyDeloadToExercise(planned: PlannedExercise): PlannedExercise {
-  return {
-    ...planned,
-    sets: Math.min(planned.sets, DELOAD.maxSets),
-    targetRir: DELOAD.targetRir,
-    targetRirMax: DELOAD.targetRir + 1,
-  };
+  return { ...planned, sets: deloadSetCount(planned.sets), targetRir: DELOAD.targetRir, targetRirMax: undefined };
 }
 
 export function applyDeload(workout: Workout): Workout {

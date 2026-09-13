@@ -8,6 +8,10 @@ export function restEndVibration(): void {
   Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => undefined);
 }
 
+export function warningHaptic(): void {
+  Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning).catch(() => undefined);
+}
+
 export function tickHaptic(): void {
   Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium).catch(() => undefined);
 }

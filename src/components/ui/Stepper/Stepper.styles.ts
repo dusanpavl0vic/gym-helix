@@ -8,7 +8,7 @@ import { typography } from '@/constants/typography';
 
 export const styles = StyleSheet.create({
   wrap: { gap: spacing.xs, flex: 1 },
-  label: { ...typography.monoMicro, color: colors.muted, textAlign: 'center' },
+  label: { ...typography.monoMicro, color: colors.muted },
   row: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   button: {
     width: metrics.tapTarget,
@@ -20,6 +20,5 @@ export const styles = StyleSheet.create({
   },
   buttonCompact: { width: 38 },
   buttonPressed: { backgroundColor: colors.mintSoft },
-  buttonText: { ...typography.monoM, color: colors.forest },
   input: { flex: 1 },
 });

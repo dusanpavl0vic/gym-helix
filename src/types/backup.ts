@@ -10,6 +10,10 @@ export interface SettingsState {
   weightStepKg: number;
   restSound: RestSoundMode;
   countdownTicks: boolean;
+  /** Sound and haptic when 10 seconds of rest are left. */
+  restWarning: boolean;
+  /** Whether the in-app notifications permission dialog was already shown. */
+  notificationsPrompted: boolean;
   vibration: boolean;
   notifications: boolean;
   barKg: number;

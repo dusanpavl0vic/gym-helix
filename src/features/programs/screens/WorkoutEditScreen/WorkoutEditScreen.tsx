@@ -1,7 +1,6 @@
 import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { EmptyState } from '@/components/common/EmptyState';
 import { ScreenContainer } from '@/components/common/ScreenContainer';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
@@ -36,8 +35,8 @@ export function WorkoutEditScreen() {
       <View style={styles.list}>
         {editor.items.length === 0 ? <EmptyState message={t('plan:noExercises')} /> : null}
         {editor.items.map((item) => (
-          <AnimatedEntry key={item.planned.id} index={item.index}>
-            <PlannedExerciseEditor
+          <PlannedExerciseEditor
+              key={item.planned.id}
               planned={item.planned}
               exercise={item.exercise}
               name={item.name}
@@ -52,10 +51,9 @@ export function WorkoutEditScreen() {
               onAddAlternative={() => editor.actions.addAlternative(item.planned.id)}
               onRemoveAlternative={(id) => editor.actions.removeAlternative(item.planned, id)}
             />
-          </AnimatedEntry>
         ))}
       </View>
-      <Button label={t('programs:workoutEdit.addExercise')} onPress={editor.actions.addExercise} />
+      <Button label={t('programs:workoutEdit.addExercise')} icon="plus" onPress={editor.actions.addExercise} />
     </ScreenContainer>
   );
 }

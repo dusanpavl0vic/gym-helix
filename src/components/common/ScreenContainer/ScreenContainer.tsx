@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
+import { KeyboardAvoidingView, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { spacing } from '@/constants/spacing';
@@ -11,7 +11,7 @@ export function ScreenContainer({ children, scroll = true, header, footer, conte
   return (
     <KeyboardAvoidingView
       style={[styles.root, withTopInset && { paddingTop: insets.top }]}
-      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+      behavior="padding">
       {header}
       {scroll ? (
         <ScrollView

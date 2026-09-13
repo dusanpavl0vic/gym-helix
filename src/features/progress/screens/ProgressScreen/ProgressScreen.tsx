@@ -1,11 +1,10 @@
 import { useState } from 'react';
+import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
-import Animated, { FadeIn } from 'react-native-reanimated';
 
 import { ScreenContainer } from '@/components/common/ScreenContainer';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
 import { SegmentedControl } from '@/components/ui/SegmentedControl';
-import { animation } from '@/constants/animation';
 
 import { BodyTab } from '../../components/BodyTab';
 import { HistoryTab } from '../../components/HistoryTab';
@@ -27,12 +26,12 @@ export function ProgressScreen() {
         selectedKey={tab}
         onSelect={(key) => setTab(key as ProgressTab)}
       />
-      <Animated.View key={tab} entering={FadeIn.duration(animation.normal)}>
+      <View>
         {tab === 'strength' ? <StrengthTab /> : null}
         {tab === 'overview' ? <OverviewTab /> : null}
         {tab === 'history' ? <HistoryTab /> : null}
         {tab === 'body' ? <BodyTab /> : null}
-      </Animated.View>
+      </View>
     </ScreenContainer>
   );
 }

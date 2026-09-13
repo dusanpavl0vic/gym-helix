@@ -2,7 +2,6 @@ export interface RestOverlayProps {
   title: string;
   kindLabel: string;
   remainingSec: number;
-  totalSec: number;
   progress: number;
   ofLabel: string;
   nextTitle: string;

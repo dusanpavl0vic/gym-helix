@@ -4,6 +4,7 @@ export const routes = {
   progress: '/progress',
   more: '/more',
   workout: '/workout',
+  workoutExercise: (index: number) => `/workout/${index}` as const,
   workoutSummary: '/workout/summary',
   exercise: (id: string) => `/exercise/${id}` as const,
   exercisePicker: '/exercise/picker',

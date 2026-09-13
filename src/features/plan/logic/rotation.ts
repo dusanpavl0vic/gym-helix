@@ -1,15 +1,7 @@
 import type { Program, RotationState } from '@/types/domain';
 
 export function createRotationState(programId: string): RotationState {
-  return {
-    programId,
-    nextIndex: 0,
-    cycleNumber: 1,
-    completedSessions: 0,
-    sessionsSinceDeload: 0,
-    deloadActive: false,
-    deloadRemaining: 0,
-  };
+  return { programId, nextIndex: 0, cycleNumber: 1, completedSessions: 0 };
 }
 
 export function getNextWorkoutId(program: Program, state: RotationState): string | undefined {
@@ -25,24 +17,13 @@ export function getRotationPosition(program: Program, state: RotationState): num
 export function completeSession(state: RotationState, rotationLength: number, completedAt: string): RotationState {
   const length = Math.max(1, rotationLength);
   const nextIndex = state.nextIndex + 1;
-  const base: RotationState = {
+  return {
     ...state,
     nextIndex,
     lastCompletedAt: completedAt,
     cycleNumber: Math.floor(nextIndex / length) + 1,
     completedSessions: state.completedSessions + 1,
   };
-
-  if (state.deloadActive) {
-    const deloadRemaining = Math.max(0, state.deloadRemaining - 1);
-    return {
-      ...base,
-      deloadRemaining,
-      deloadActive: deloadRemaining > 0,
-      sessionsSinceDeload: 0,
-    };
-  }
-  return { ...base, sessionsSinceDeload: state.sessionsSinceDeload + 1 };
 }
 
 /** Moves the pointer to the chosen workout without resetting progress. */

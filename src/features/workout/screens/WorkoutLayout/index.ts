@@ -1,0 +1,1 @@
+export { WorkoutLayout } from './WorkoutLayout';

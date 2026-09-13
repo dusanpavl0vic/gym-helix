@@ -1,9 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Text, View, type LayoutChangeEvent } from 'react-native';
-import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import Svg, { Line, Path, Rect, Text as SvgText } from 'react-native-svg';
 
-import { animation } from '@/constants/animation';
 import { chart } from '@/constants/charts';
 import { metrics } from '@/constants/metrics';
 import { fontFamily } from '@/constants/typography';
@@ -13,10 +11,12 @@ import { ChartTooltip } from '../ChartTooltip';
 import { styles } from './BarChart.styles';
 import type { BarChartProps } from './BarChart.types';
 
+const AXIS_FONT = 9;
+const VALUE_FONT = 10;
+
 export function BarChart({ bars, height = metrics.chartHeight, formatValue, accessibilityLabel, emptyLabel, highlightLast = true, target }: BarChartProps) {
   const [width, setWidth] = useState(0);
   const [active, setActive] = useState<number | null>(null);
-  const grow = useSharedValue(0);
 
   const geometry = useMemo(() => {
     if (width === 0 || bars.length === 0) return null;
@@ -34,13 +34,6 @@ export function BarChart({ bars, height = metrics.chartHeight, formatValue, acce
     return { ticks, plot, sy, items, barWidth };
   }, [width, height, bars, target]);
 
-  useEffect(() => {
-    grow.value = 0;
-    grow.value = withTiming(1, { duration: animation.chartReveal, easing: Easing.out(Easing.back(1.2)) });
-  }, [bars, grow]);
-
-  const growStyle = useAnimatedStyle(() => ({ transform: [{ scaleY: grow.value }] }));
-
   if (bars.length === 0 || bars.every((b) => b.value === 0)) {
     return (
       <View style={[styles.wrap, styles.empty, { height }]}>
@@ -52,7 +45,6 @@ export function BarChart({ bars, height = metrics.chartHeight, formatValue, acce
   const handleTouch = (x: number) => {
     if (geometry) setActive(nearestIndex(geometry.items.map((it) => it.cx), x));
   };
-
   const lastIndex = bars.length - 1;
 
   return (
@@ -69,7 +61,7 @@ export function BarChart({ bars, height = metrics.chartHeight, formatValue, acce
       onResponderRelease={() => setActive(null)}>
       {geometry ? (
         <>
-          <Svg width={width} height={height} style={{ position: 'absolute' }}>
+          <Svg width={width} height={height} style={styles.layer}>
             {target ? (
               <Rect
                 x={geometry.plot.left}
@@ -84,48 +76,39 @@ export function BarChart({ bars, height = metrics.chartHeight, formatValue, acce
               <Line key={`g${tick}`} x1={geometry.plot.left} x2={geometry.plot.right} y1={geometry.sy(tick)} y2={geometry.sy(tick)} stroke={chart.colors.grid} strokeWidth={chart.gridStroke} />
             ))}
             {geometry.ticks.map((tick) => (
-              <SvgText key={`t${tick}`} x={geometry.plot.left - 6} y={geometry.sy(tick) + 3} fontSize={9} fontFamily={fontFamily.monoBold} fill={chart.colors.axisText} textAnchor="end">
+              <SvgText key={`t${tick}`} x={geometry.plot.left - 6} y={geometry.sy(tick) + 3} fontSize={AXIS_FONT} fontFamily={fontFamily.monoBold} fill={chart.colors.axisText} textAnchor="end">
                 {formatValue(tick)}
               </SvgText>
             ))}
             {geometry.items.map((item, i) => (
-              <SvgText key={`l${bars[i].key}`} x={item.cx} y={height - 6} fontSize={9} fontFamily={fontFamily.monoBold} fill={chart.colors.axisText} textAnchor="middle">
+              <SvgText key={`l${bars[i].key}`} x={item.cx} y={height - 6} fontSize={AXIS_FONT} fontFamily={fontFamily.monoBold} fill={chart.colors.axisText} textAnchor="middle">
                 {bars[i].label}
               </SvgText>
             ))}
+            {geometry.items.map((item, i) => {
+              const strong = active === i || (active === null && highlightLast && i === lastIndex);
+              return (
+                <Path
+                  key={bars[i].key}
+                  d={roundedTopBarPath(item.x, item.top, geometry.barWidth, item.heightPx, chart.barRadius)}
+                  fill={strong ? chart.colors.barStrong : chart.colors.barMuted}
+                />
+              );
+            })}
+            {highlightLast && active === null ? (
+              <SvgText
+                x={geometry.items[lastIndex].cx}
+                y={Math.max(10, geometry.items[lastIndex].top - 6)}
+                fontSize={VALUE_FONT}
+                fontFamily={fontFamily.monoBold}
+                fill={chart.colors.line}
+                textAnchor="middle">
+                {formatValue(bars[lastIndex].value)}
+              </SvgText>
+            ) : null}
           </Svg>
-          <Animated.View style={[styles.grow, growStyle]} pointerEvents="none">
-            <Svg width={width} height={height}>
-              {geometry.items.map((item, i) => {
-                const strong = active === i || (active === null && highlightLast && i === lastIndex);
-                return (
-                  <Path
-                    key={bars[i].key}
-                    d={roundedTopBarPath(item.x, item.top, geometry.barWidth, item.heightPx, chart.barRadius)}
-                    fill={strong ? chart.colors.barStrong : chart.colors.barMuted}
-                  />
-                );
-              })}
-              {highlightLast && active === null ? (
-                <SvgText
-                  x={geometry.items[lastIndex].cx}
-                  y={Math.max(10, geometry.items[lastIndex].top - 6)}
-                  fontSize={10}
-                  fontFamily={fontFamily.monoBold}
-                  fill={chart.colors.line}
-                  textAnchor="middle">
-                  {formatValue(bars[lastIndex].value)}
-                </SvgText>
-              ) : null}
-            </Svg>
-          </Animated.View>
           {active !== null ? (
-            <ChartTooltip
-              value={formatValue(bars[active].value)}
-              label={bars[active].tooltipLabel ?? bars[active].label}
-              x={geometry.items[active].cx}
-              containerWidth={width}
-            />
+            <ChartTooltip value={formatValue(bars[active].value)} label={bars[active].tooltipLabel ?? bars[active].label} x={geometry.items[active].cx} containerWidth={width} />
           ) : null}
         </>
       ) : null}

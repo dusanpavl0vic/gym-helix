@@ -6,6 +6,7 @@ import { REST_SEC_BY_KIND, type ExerciseKind } from '@/constants/training';
 import { selectProgramsState } from '@/features/programs/store/programsSelectors';
 import { plannedExerciseAdded, plannedExerciseUpdated } from '@/features/programs/store/programsSlice';
 import { exerciseSubstituted } from '@/features/workout/store/workoutThunks';
+import { usePermissionPrompt } from '@/hooks/usePermissionPrompt';
 import { pickExercisePhoto, type PhotoSource } from '@/lib/files/imagePicker';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import type { MuscleGroup } from '@/types/domain';
@@ -29,6 +30,7 @@ export function useExercisePicker() {
   const { t } = useTranslation(['exercises', 'common']);
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const promptPermission = usePermissionPrompt();
   const params = useLocalSearchParams<Record<keyof PickerParams, string>>();
   const exercises = useAppSelector(selectAllExercises);
   const programsState = useAppSelector(selectProgramsState);
@@ -61,7 +63,8 @@ export function useExercisePicker() {
 
   const createCustom = async (input: { name: string; muscles: MuscleGroup[]; kind: ExerciseKind; photoSource?: PhotoSource }) => {
     const id = createId('ex_');
-    const photo = input.photoSource ? await pickExercisePhoto(input.photoSource, id) : null;
+    const canPick = input.photoSource ? await promptPermission(input.photoSource === 'camera' ? 'camera' : 'photos') : false;
+    const photo = input.photoSource && canPick ? await pickExercisePhoto(input.photoSource, id) : null;
     dispatch(
       customExerciseSaved({
         id,

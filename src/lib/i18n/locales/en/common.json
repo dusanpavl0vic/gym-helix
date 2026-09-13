@@ -53,6 +53,7 @@
     "other": "other"
   },
   "cardioTypes": {
+    "run": "Run",
     "swim": "Swim",
     "zone2": "Zone 2",
     "walk": "Walk",
@@ -61,5 +62,34 @@
   "errors": {
     "generic": "Something went wrong. Please try again."
   },
-  "tagline": "training planner · offline"
+  "tagline": "training planner · offline",
+  "permissions": {
+    "allow": "Allow",
+    "notNow": "Not now",
+    "openSettings": "Open settings",
+    "notifications": {
+      "title": "Notify when rest is over",
+      "body": "So we can tell you when it is time for the next set, even with the screen locked. Nothing else is sent.",
+      "denied": "Notifications are turned off. Enable them in your phone settings so the rest timer can notify you."
+    },
+    "camera": {
+      "title": "Camera access",
+      "body": "The camera is only used when you take a photo of an exercise you add.",
+      "denied": "Camera access is turned off. Enable it in your phone settings."
+    },
+    "photos": {
+      "title": "Photo access",
+      "body": "Your photos are only used to pick an exercise image.",
+      "denied": "Photo access is turned off. Enable it in your phone settings."
+    }
+  },
+  "dialog": {
+    "later": "Resume later",
+    "discard": "Discard",
+    "keep": "Stay"
+  },
+  "keypad": {
+    "clear": "Clear",
+    "ok": "OK"
+  }
 }

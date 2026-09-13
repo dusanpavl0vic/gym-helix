@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 
 import { colors } from '@/constants/colors';
 import { REST_NOTIFICATION_CHANNEL, REST_VIBRATION_PATTERN } from '@/constants/timer';
+import type { PermissionStatus } from '@/types/permissions';
 
 type NotificationsModule = typeof import('expo-notifications');
 
@@ -11,6 +12,8 @@ type NotificationsModule = typeof import('expo-notifications');
  * so it is only loaded lazily, and never inside Expo Go. Dev builds and APKs get full support.
  */
 export const notificationsAvailable = !(Platform.OS === 'android' && isRunningInExpoGo());
+
+const UNAVAILABLE: PermissionStatus = { available: false, granted: false, canAskAgain: false };
 
 let notificationsModule: NotificationsModule | null = null;
 
@@ -57,13 +60,18 @@ export async function configureRestNotifications(channelName: string): Promise<v
   }
 }
 
-export async function ensureNotificationPermission(): Promise<boolean> {
+export async function getNotificationPermission(): Promise<PermissionStatus> {
   const Notifications = loadNotifications();
-  if (!Notifications) return false;
-  const current = await Notifications.getPermissionsAsync();
-  if (current.granted) return true;
-  const requested = await Notifications.requestPermissionsAsync();
-  return requested.granted;
+  if (!Notifications) return UNAVAILABLE;
+  const status = await Notifications.getPermissionsAsync();
+  return { available: true, granted: status.granted, canAskAgain: status.canAskAgain };
+}
+
+export async function requestNotificationPermission(): Promise<PermissionStatus> {
+  const Notifications = loadNotifications();
+  if (!Notifications) return UNAVAILABLE;
+  const status = await Notifications.requestPermissionsAsync();
+  return { available: true, granted: status.granted, canAskAgain: status.canAskAgain };
 }
 
 export async function scheduleRestEnd(endsAt: number, title: string, body: string, withSound: boolean): Promise<string | null> {

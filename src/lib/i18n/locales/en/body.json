@@ -3,12 +3,27 @@
   "subtitle": "weight and measurements · 4-week comparison",
   "add": "+ New measurement",
   "save": "Save measurement",
-  "fields": { "weightKg": "Weight (kg)", "waistCm": "Waist (cm)", "armCm": "Arm (cm)", "chestCm": "Chest (cm)", "thighCm": "Thigh (cm)" },
-  "short": { "weightKg": "WEIGHT", "waistCm": "WAIST", "armCm": "ARM", "chestCm": "CHEST", "thighCm": "THIGH" },
+  "fields": {
+    "weightKg": "Weight (kg)",
+    "waistCm": "Waist (cm)",
+    "armCm": "Arm (cm)",
+    "chestCm": "Chest (cm)",
+    "thighCm": "Thigh (cm)"
+  },
+  "short": {
+    "weightKg": "WEIGHT",
+    "waistCm": "WAIST",
+    "armCm": "ARM",
+    "chestCm": "CHEST",
+    "thighCm": "THIGH"
+  },
   "compare": "4 weeks ago",
   "noCompare": "No measurement from 4 weeks ago",
   "empty": "No measurements yet. Measure waist and arm once a week, in the morning.",
   "history": "Measurements",
   "deleteTitle": "Delete measurement?",
-  "atLeastOne": "Enter at least one value"
+  "atLeastOne": "Enter at least one value",
+  "weightDialog": {
+    "title": "Today's weight"
+  }
 }

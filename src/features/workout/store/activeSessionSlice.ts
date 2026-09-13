@@ -2,9 +2,9 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import { appReset, backupRestored } from '@/store/appActions';
 
-import { findNextOpenPosition, firstOpenSetIndex } from '../helpers/position';
+import { isSessionComplete } from '../helpers/position';
 import { restSecondsFor } from '../helpers/rest';
-import type { ActiveExercise, ActiveSession, ActiveSet } from '../types';
+import type { ActiveExercise, ActiveSession, ActiveSet, RestKind } from '../types';
 
 interface ActiveSessionState {
   session: ActiveSession | null;
@@ -26,12 +26,14 @@ const activeSessionSlice = createSlice({
       const set = exercise?.sets[action.payload.setIndex];
       if (!exercise || !set) return;
       Object.assign(set, action.payload.patch);
-      if (action.payload.patch.weightKg !== undefined && !set.done) {
+      const weight = action.payload.patch.weightKg;
+      if (typeof weight === 'number' && !set.done) {
         exercise.sets.slice(action.payload.setIndex + 1).forEach((next) => {
-          if (!next.done) next.weightKg = action.payload.patch.weightKg as number;
+          if (!next.done) next.weightKg = weight;
         });
       }
     },
+    /** Marks a set done and starts rest. Never switches to another exercise — the user chooses. */
     setCompleted(state, action: PayloadAction<SetRef & { now: number; completedAt: string }>) {
       const session = state.session;
       const exercise = session?.exercises[action.payload.exerciseIndex];
@@ -39,24 +41,15 @@ const activeSessionSlice = createSlice({
       if (!session || !exercise || !set) return;
       set.done = true;
       set.completedAt = action.payload.completedAt;
+      if (set.weightKg === null) set.weightKg = 0;
 
-      const next = findNextOpenPosition(session.exercises, action.payload.exerciseIndex);
-      if (!next) {
+      if (isSessionComplete(session.exercises)) {
         session.rest = null;
         return;
       }
-      const kind = next.exerciseIndex === action.payload.exerciseIndex ? 'set' : 'exercise';
+      const kind: RestKind = exercise.sets.some((s) => !s.done) ? 'set' : 'exercise';
       const totalSec = restSecondsFor(exercise.planned, kind);
-      session.currentExerciseIndex = next.exerciseIndex;
-      session.rest = { kind, totalSec, endsAt: action.payload.now + totalSec * 1000 };
-    },
-    setReopened(state, action: PayloadAction<SetRef>) {
-      const exercise = state.session?.exercises[action.payload.exerciseIndex];
-      const set = exercise?.sets[action.payload.setIndex];
-      if (!state.session || !set) return;
-      set.done = false;
-      set.completedAt = undefined;
-      state.session.currentExerciseIndex = action.payload.exerciseIndex;
+      session.rest = { kind, totalSec, endsAt: action.payload.now + totalSec * 1000, exerciseIndex: action.payload.exerciseIndex };
     },
     restExtended(state, action: PayloadAction<number>) {
       const rest = state.session?.rest;
@@ -68,7 +61,7 @@ const activeSessionSlice = createSlice({
       if (state.session) state.session.rest = null;
     },
     exerciseSelected(state, action: PayloadAction<number>) {
-      if (state.session && state.session.exercises[action.payload]) state.session.currentExerciseIndex = action.payload;
+      if (state.session?.exercises[action.payload]) state.session.currentExerciseIndex = action.payload;
     },
     exerciseReplaced(state, action: PayloadAction<{ exerciseIndex: number; exercise: ActiveExercise }>) {
       const session = state.session;
@@ -81,20 +74,14 @@ const activeSessionSlice = createSlice({
       };
     },
     exerciseSkipToggled(state, action: PayloadAction<number>) {
-      const session = state.session;
-      const exercise = session?.exercises[action.payload];
-      if (!session || !exercise) return;
-      exercise.skipped = !exercise.skipped;
-      if (exercise.skipped && session.currentExerciseIndex === action.payload) {
-        const next = findNextOpenPosition(session.exercises, action.payload);
-        if (next) session.currentExerciseIndex = next.exerciseIndex;
-      }
+      const exercise = state.session?.exercises[action.payload];
+      if (exercise) exercise.skipped = !exercise.skipped;
     },
     setAdded(state, action: PayloadAction<number>) {
       const exercise = state.session?.exercises[action.payload];
       if (!exercise) return;
       const last = exercise.sets[exercise.sets.length - 1];
-      exercise.sets.push({ weightKg: last?.weightKg ?? 0, reps: last?.reps ?? exercise.planned.repsMin, done: false });
+      exercise.sets.push({ weightKg: last?.weightKg ?? exercise.suggestedWeightKg, reps: last?.reps ?? exercise.planned.repsMin, done: false });
     },
     setRemoved(state, action: PayloadAction<number>) {
       const exercise = state.session?.exercises[action.payload];
@@ -112,8 +99,7 @@ const activeSessionSlice = createSlice({
 });
 
 export const {
-  sessionStarted, setValueChanged, setCompleted, setReopened, restExtended, restCleared,
+  sessionStarted, setValueChanged, setCompleted, restExtended, restCleared,
   exerciseSelected, exerciseReplaced, exerciseSkipToggled, setAdded, setRemoved, sessionClosed,
 } = activeSessionSlice.actions;
-export { firstOpenSetIndex };
 export default activeSessionSlice.reducer;

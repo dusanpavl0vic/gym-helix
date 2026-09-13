@@ -1,75 +1,55 @@
-import { LOWER_BODY_MUSCLES } from '@/constants/muscles';
-import { WEIGHT_INCREMENT_KG } from '@/constants/training';
-import type { ExercisePerformance, MuscleGroup, PerformedSet, PlannedExercise } from '@/types/domain';
+import { DEFAULT_INCREMENT_KG, PROGRESSION_DECREASE_FACTOR } from '@/constants/training';
+import type { ExercisePerformance, PerformedSet, PlannedExercise } from '@/types/domain';
 
-export type SuggestionReason = 'increase' | 'hold' | 'recover' | 'none';
+export type SuggestionReason = 'increase' | 'decrease' | 'hold' | 'none';
 
 export interface ProgressionSuggestion {
   reason: SuggestionReason;
+  /** null when there is nothing to suggest (first time) — the input stays empty. */
   weightKg: number | null;
   /** Prefilled reps per planned set. */
   reps: number[];
   incrementKg: number;
 }
 
-export function isLowerBody(primaryMuscles: MuscleGroup[]): boolean {
-  return primaryMuscles.some((m) => LOWER_BODY_MUSCLES.includes(m));
-}
-
 const workingWeight = (sets: PerformedSet[]): number => sets.reduce((max, s) => Math.max(max, s.weightKg), 0);
-const totalReps = (sets: PerformedSet[]): number => sets.reduce((sum, s) => sum + s.reps, 0);
-
-function hitTopOfRange(planned: PlannedExercise, sets: PerformedSet[]): boolean {
-  if (sets.length < planned.sets) return false;
-  const rirCeiling = planned.targetRirMax ?? planned.targetRir;
-  return sets.every((s) => s.reps >= planned.repsMax && (s.rir === undefined || s.rir <= rirCeiling));
-}
-
-function repsDroppedTwiceInARow(history: ExercisePerformance[]): boolean {
-  if (history.length < 3) return false;
-  const [latest, previous, older] = history;
-  const sameWeight =
-    workingWeight(latest.sets) >= workingWeight(previous.sets) &&
-    workingWeight(previous.sets) >= workingWeight(older.sets);
-  return sameWeight && totalReps(latest.sets) < totalReps(previous.sets) && totalReps(previous.sets) < totalReps(older.sets);
-}
+const floorToStep = (value: number, step: number): number => Math.max(0, Math.floor(value / step) * step);
 
 /**
- * Double progression (spec 8.7). `history` must be ordered newest first.
- * The result is only a suggestion used to prefill inputs.
+ * Double progression (ironlog spec §3). `history` must be ordered newest first.
+ * - every set reached repsMax at the same weight → +incrementKg, back to repsMin
+ * - no set reached repsMin → −10% (rounded down to the weight step)
+ * - otherwise → same weight, +1 rep per set
  */
-export function suggestProgression(
-  planned: PlannedExercise,
-  history: ExercisePerformance[],
-  primaryMuscles: MuscleGroup[],
-): ProgressionSuggestion {
-  const incrementKg = isLowerBody(primaryMuscles) ? WEIGHT_INCREMENT_KG.lower : WEIGHT_INCREMENT_KG.upper;
+export function suggestProgression(planned: PlannedExercise, history: ExercisePerformance[], weightStepKg: number): ProgressionSuggestion {
+  const incrementKg = planned.incrementKg ?? DEFAULT_INCREMENT_KG;
   const latest = history[0];
+  const fill = (reps: number) => Array<number>(planned.sets).fill(reps);
 
   if (!latest || latest.sets.length === 0) {
-    return { reason: 'none', weightKg: null, reps: Array(planned.sets).fill(planned.repsMin), incrementKg };
+    return { reason: 'none', weightKg: null, reps: fill(planned.repsMin), incrementKg };
   }
 
   const weight = workingWeight(latest.sets);
+  const previousReps = (index: number) => (latest.sets[index] ?? latest.sets[latest.sets.length - 1]).reps;
 
-  if (hitTopOfRange(planned, latest.sets)) {
-    return {
-      reason: 'increase',
-      weightKg: weight + incrementKg,
-      reps: Array(planned.sets).fill(planned.repsMin),
-      incrementKg,
-    };
+  if (planned.progression === 'none') {
+    return { reason: 'hold', weightKg: weight, reps: Array.from({ length: planned.sets }, (_, i) => previousReps(i)), incrementKg };
   }
 
-  const reps = Array.from({ length: planned.sets }, (_, i) => {
-    const previous = latest.sets[i] ?? latest.sets[latest.sets.length - 1];
-    return Math.min(planned.repsMax, Math.max(planned.repsMin, previous.reps));
-  });
+  const sameWeight = latest.sets.every((s) => s.weightKg === latest.sets[0].weightKg);
+  if (sameWeight && latest.sets.length >= planned.sets && latest.sets.every((s) => s.reps >= planned.repsMax)) {
+    return { reason: 'increase', weightKg: weight + incrementKg, reps: fill(planned.repsMin), incrementKg };
+  }
+
+  if (latest.sets.every((s) => s.reps < planned.repsMin)) {
+    return { reason: 'decrease', weightKg: floorToStep(weight * PROGRESSION_DECREASE_FACTOR, weightStepKg), reps: fill(planned.repsMin), incrementKg };
+  }
 
   return {
-    reason: repsDroppedTwiceInARow(history) ? 'recover' : 'hold',
+    reason: 'hold',
     weightKg: weight,
-    reps,
+    reps: Array.from({ length: planned.sets }, (_, i) => Math.min(planned.repsMax, Math.max(planned.repsMin, previousReps(i) + 1))),
     incrementKg,
   };
 }

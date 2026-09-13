@@ -19,9 +19,9 @@ export function WorkoutRow({ badge, name, meta, canMoveUp, canMoveDown, labels, 
         </View>
       </PressableScale>
       <View style={styles.controls}>
-        {canMoveUp ? <IconButton glyph="↑" onPress={onMoveUp} accessibilityLabel={labels.moveUp} variant="mint" /> : null}
-        {canMoveDown ? <IconButton glyph="↓" onPress={onMoveDown} accessibilityLabel={labels.moveDown} variant="mint" /> : null}
-        <IconButton glyph="✕" onPress={onDelete} accessibilityLabel={labels.delete} />
+        <IconButton icon="arrow-up" variant="mint" onPress={onMoveUp} disabled={!canMoveUp} accessibilityLabel={labels.moveUp} />
+        <IconButton icon="arrow-down" variant="mint" onPress={onMoveDown} disabled={!canMoveDown} accessibilityLabel={labels.moveDown} />
+        <IconButton icon="delete" color="danger" onPress={onDelete} accessibilityLabel={labels.delete} />
       </View>
     </View>
   );

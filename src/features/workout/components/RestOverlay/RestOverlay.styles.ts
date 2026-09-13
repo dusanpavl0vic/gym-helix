@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: spacing.x7,
-    padding: spacing.x8,
+    paddingHorizontal: spacing.x8,
   },
   title: { ...typography.monoXS, color: colors.lime, letterSpacing: 2 },
   card: {
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     gap: spacing.sm,
   },
   kind: { ...typography.monoMicro, color: colors.lime },
-  nextTitle: { ...typography.bodyStrong, fontSize: 17, lineHeight: 21, color: colors.paperWarm },
+  nextTitle: { ...typography.bodyStrong, fontSize: 17, lineHeight: 23, color: colors.paperWarm },
   nextMeta: { ...typography.body, color: colors.sage },
   actions: { alignSelf: 'stretch', flexDirection: 'row', gap: spacing.lg },
 });

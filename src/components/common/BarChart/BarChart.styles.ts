@@ -5,7 +5,7 @@ import { typography } from '@/constants/typography';
 
 export const styles = StyleSheet.create({
   wrap: { width: '100%' },
-  grow: { position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, transformOrigin: 'bottom' },
+  layer: { position: 'absolute', left: 0, top: 0 },
   empty: { alignItems: 'center', justifyContent: 'center' },
   emptyText: { ...typography.caption, color: colors.muted, textAlign: 'center' },
 });

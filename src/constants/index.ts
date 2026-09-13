@@ -14,3 +14,5 @@ export * from './animation';
 export * from './charts';
 export * from './sound';
 export * from './brand';
+export * from './icons';
+export * from './permissions';

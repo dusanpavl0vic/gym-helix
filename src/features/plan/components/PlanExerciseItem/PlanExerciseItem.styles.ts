@@ -17,10 +17,10 @@ export const styles = StyleSheet.create({
     padding: spacing.xl,
   },
   pressed: { borderColor: colors.forest },
-  texts: { flex: 1, gap: spacing.xs, minWidth: 0 },
+  texts: { flex: 1, gap: 2, minWidth: 0 },
   name: { ...typography.title, color: colors.ink },
   scheme: { ...typography.caption, color: colors.muted },
+  restRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.xs },
   rest: { ...typography.monoTag, color: colors.forest },
   note: { ...typography.small, color: colors.slate },
-  chevron: { fontSize: 20, color: colors.mutedLight },
 });

@@ -8,21 +8,35 @@
   "start": "Počni trening →",
   "resume": "Nastavi trening →",
   "chooseOther": "Izaberi drugi",
-  "chooseTitle": "Izaberi sledeći trening",
-  "stats": { "thisWeek": "ove nedelje", "volume": "volumen", "cycle": "ciklus" },
+  "stats": {
+    "thisWeek": "ove nedelje",
+    "volume": "volumen",
+    "cycle": "nedelja"
+  },
   "pastWorkouts": "Prošli treninzi",
   "progressLink": "Napredak",
   "noHistory": "Kad završiš prvi trening, pojaviće se ovde.",
   "historyMeta": "{{day}} · {{minutes}} min · {{sets}} serija",
-  "quick": { "cardio": "Kardio / bazen", "cardioHint": "Brzi unos", "weight": "Težina danas", "weightHint": "Unesi kg", "weightSaved": "Sačuvano: {{value}} kg" },
-  "deload": {
-    "title": "Vreme za deload nedelju",
-    "body": "Završio si 6 krugova. Sledeći krug: iste vežbe, 2 serije, ista kilaža, RIR 4–5.",
-    "start": "Pokreni deload",
-    "dismiss": "Ne sada",
-    "active_one": "Deload u toku · još {{count}} trening",
-    "active_few": "Deload u toku · još {{count}} treninga",
-    "active_other": "Deload u toku · još {{count}} treninga"
+  "quick": {
+    "cardio": "Kardio / bazen",
+    "cardioHint": "Brzi unos"
   },
-  "emptyProgram": "Aktivni program nema treninge. Dodaj ih u Planu."
+  "deload": {
+    "title": "Deload nedelja — lagano",
+    "body": "Nedelja {{week}}: manje serija, ista kilaža, RIR 4."
+  },
+  "emptyProgram": "Aktivni program nema treninge. Dodaj ih u Planu.",
+  "weight": {
+    "title": "Težina",
+    "today": "izmereno danas",
+    "lastOn": "poslednje: {{date}}",
+    "empty": "Unesi jutarnju težinu",
+    "delta": "{{value}} kg za 7 dana"
+  },
+  "weekBadge": "NEDELJA {{week}}",
+  "chooser": {
+    "title": "Izaberi trening",
+    "meta": "{{exercises}} vežbi · ~{{minutes}} min",
+    "next": "SLEDEĆI"
+  }
 }

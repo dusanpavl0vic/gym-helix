@@ -1,7 +1,6 @@
 import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { EmptyState } from '@/components/common/EmptyState';
 import { ScreenContainer } from '@/components/common/ScreenContainer';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
@@ -31,13 +30,13 @@ export function ProgramEditScreen() {
     <ScreenContainer>
       <ScreenHeader title={t('programs:edit.title')} onBack={editor.actions.back} backLabel={t('common:back')} right={editor.isActive ? <Chip label={t('programs:active')} variant="lime" /> : undefined} />
       <TextField key={editor.name} label={t('programs:edit.name')} defaultValue={editor.name} onEndEditing={(e) => editor.actions.rename(e.nativeEvent.text)} />
-      {!editor.isActive ? <Button label={t('programs:setActive')} onPress={editor.actions.activate} /> : null}
+      {!editor.isActive ? <Button label={t('programs:setActive')} icon="check" onPress={editor.actions.activate} /> : null}
       <View style={styles.section}>
         <SectionHeader title={t('programs:edit.rotation')} />
         <Text style={styles.hint}>{t('programs:edit.rotationHint')}</Text>
         {editor.workouts.map((w) => (
-          <AnimatedEntry key={w.id} index={w.index}>
-            <WorkoutRow
+          <WorkoutRow
+              key={w.id}
               badge={w.badge}
               name={w.name}
               meta={w.meta}
@@ -49,12 +48,11 @@ export function ProgramEditScreen() {
               onMoveDown={() => editor.actions.move(w.index, 1)}
               onDelete={() => editor.actions.removeWorkout(w.id)}
             />
-          </AnimatedEntry>
         ))}
-        <Button label={t('programs:edit.addWorkout')} onPress={editor.actions.addWorkout} variant="outline" />
+        <Button label={t('programs:edit.addWorkout')} icon="plus" onPress={editor.actions.addWorkout} variant="outline" />
       </View>
       <View style={styles.actions}>
-        <Button label={t('programs:duplicate')} onPress={editor.actions.duplicate} variant="ghost" />
+        <Button label={t('programs:duplicate')} icon="copy" onPress={editor.actions.duplicate} variant="ghost" />
       </View>
     </ScreenContainer>
   );

@@ -1,17 +1,19 @@
-import { Pressable, Text } from 'react-native';
+import { PressableScale } from '@/components/common/PressableScale';
 
-import { styles } from './IconButton.styles';
+import { Icon } from '../Icon';
+import { DEFAULT_ICON_COLOR, ICON_SIZE, styles } from './IconButton.styles';
 import type { IconButtonProps } from './IconButton.types';
 
-export function IconButton({ glyph, onPress, accessibilityLabel, variant = 'paper', style }: IconButtonProps) {
+export function IconButton({ icon, onPress, accessibilityLabel, variant = 'paper', color, size = 'md', disabled, style }: IconButtonProps) {
   return (
-    <Pressable
-      accessibilityRole="button"
+    <PressableScale
       accessibilityLabel={accessibilityLabel}
-      hitSlop={4}
+      hitSlop={6}
+      disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [styles.base, styles[variant], pressed && styles.pressed, style]}>
-      <Text style={styles.glyph}>{glyph}</Text>
-    </Pressable>
+      style={[styles[size], styles[variant], style]}
+      pressedStyle={styles.pressed}>
+      <Icon name={icon} size={ICON_SIZE[size]} color={color ?? DEFAULT_ICON_COLOR[variant]} />
+    </PressableScale>
   );
 }

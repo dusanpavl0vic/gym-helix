@@ -2,7 +2,7 @@ import type { TFunction } from 'i18next';
 
 import type { PlannedExercise, Program } from '@/types/domain';
 
-import { getWorkoutBadge, getWorkoutName } from '@/features/programs/helpers/programText';
+import { getWorkoutName } from '@/features/programs/helpers/programText';
 
 export function formatScheme(planned: PlannedExercise, t: TFunction): string {
   const base =
@@ -23,10 +23,5 @@ export const formatRest = (planned: PlannedExercise, t: TFunction): string =>
     : t('plan:rest', { value: planned.restSec });
 
 export function formatRotation(program: Program, t: TFunction): string {
-  return program.rotation
-    .map((id) => {
-      const index = program.workouts.findIndex((w) => w.id === id);
-      return getWorkoutBadge(getWorkoutName(program.workouts[index], t), index);
-    })
-    .join(' → ');
+  return program.rotation.map((id) => getWorkoutName(program.workouts.find((w) => w.id === id), t)).join(' → ');
 }

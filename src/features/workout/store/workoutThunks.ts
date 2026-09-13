@@ -1,9 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { measurementAdded } from '@/features/body/store/bodySlice';
-import { selectAllExercises } from '@/features/exercises/store/exercisesSelectors';
 import { rotationJumped, rotationSessionCompleted } from '@/features/plan/store/rotationSlice';
-import { selectActiveRotation, selectNextWorkout } from '@/features/plan/store/rotationSelectors';
+import { selectIsDeloadWeek, selectNextWorkout } from '@/features/plan/store/rotationSelectors';
 import { selectActiveProgram } from '@/features/programs/store/programsSelectors';
 import { historySessionAdded } from '@/features/progress/store/historySlice';
 import type { AppDispatch, RootState } from '@/store';
@@ -33,9 +32,9 @@ export const workoutStarted =
           program,
           workout,
           workoutName: params.workoutName,
-          isDeload: Boolean(selectActiveRotation(state)?.deloadActive),
+          isDeload: selectIsDeloadWeek(state),
           sessions: state.history.sessions,
-          exercises: selectAllExercises(state),
+          weightStepKg: state.settings.weightStepKg,
           startedAt: new Date().toISOString(),
         }),
       ),
@@ -52,7 +51,7 @@ export const exerciseSubstituted =
     dispatch(
       exerciseReplaced({
         exerciseIndex: params.exerciseIndex,
-        exercise: buildActiveExercise(planned, params.exerciseId, false, state.history.sessions, selectAllExercises(state)),
+        exercise: buildActiveExercise(planned, params.exerciseId, false, state.history.sessions, state.settings.weightStepKg),
       }),
     );
   };
@@ -69,13 +68,7 @@ export const workoutFinished = createAsyncThunk<string | undefined, { bodyweight
 
     await saveSession(session);
     dispatch(historySessionAdded(session));
-    dispatch(
-      rotationSessionCompleted({
-        programId: active.programId,
-        rotationLength: program?.rotation.length ?? 1,
-        completedAt: finishedAt,
-      }),
-    );
+    dispatch(rotationSessionCompleted({ programId: active.programId, rotationLength: program?.rotation.length ?? 1, completedAt: finishedAt }));
     if (extra.bodyweightKg) {
       await dispatch(measurementAdded({ id: createId('m_'), date: finishedAt, weightKg: extra.bodyweightKg }));
     }

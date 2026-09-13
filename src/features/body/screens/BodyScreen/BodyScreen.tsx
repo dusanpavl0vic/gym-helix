@@ -1,7 +1,6 @@
 import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { EmptyState } from '@/components/common/EmptyState';
 import { ListItem } from '@/components/common/ListItem';
 import { ScreenContainer } from '@/components/common/ScreenContainer';
@@ -27,7 +26,7 @@ export function BodyScreen() {
       <Card>
         <MeasurementForm fields={body.fields} labels={labels} values={body.draft} onChange={body.setField} />
         {body.error ? <Text style={styles.error}>{t('body:atLeastOne')}</Text> : null}
-        <Button label={t('body:save')} onPress={body.save} />
+        <Button label={t('body:save')} icon="check" onPress={body.save} />
       </Card>
       <SectionHeader title={t('body:compare')} />
       <View style={styles.compare}>
@@ -42,10 +41,14 @@ export function BodyScreen() {
       <SectionHeader title={t('body:history')} />
       <View style={styles.list}>
         {body.rows.length === 0 ? <EmptyState message={t('body:empty')} /> : null}
-        {body.rows.map((row, i) => (
-          <AnimatedEntry key={row.id} index={i}>
-            <ListItem title={row.date} subtitle={row.values} trailing={<IconButton glyph="✕" onPress={() => body.remove(row.id)} accessibilityLabel={t('common:delete')} />} />
-          </AnimatedEntry>
+        {body.rows.map((row) => (
+          <ListItem
+            key={row.id}
+            icon="measure"
+            title={row.date}
+            subtitle={row.values}
+            trailing={<IconButton icon="delete" color="danger" variant="ghost" onPress={() => body.remove(row.id)} accessibilityLabel={t('common:delete')} />}
+          />
         ))}
       </View>
     </ScreenContainer>

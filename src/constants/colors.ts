@@ -23,6 +23,7 @@ export const colors = {
   danger: '#B5483B',
   dangerSoft: '#F3DCD6',
   white: '#FFFFFF',
+  backdrop: 'rgba(20,35,27,.55)',
   transparent: 'transparent',
 } as const;
 

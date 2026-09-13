@@ -15,4 +15,5 @@ export interface CalendarMonthProps {
   onNext: () => void;
   prevLabel: string;
   nextLabel: string;
+  legend: { strength: string; cardio: string };
 }

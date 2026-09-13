@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 import { selectActiveProgram } from '@/features/programs/store/programsSelectors';
 import type { RootState } from '@/store';
 
-import { isDeloadDue } from '../logic/deload';
+import { isDeloadWeek } from '../logic/deload';
 import { createRotationState, getNextWorkoutId } from '../logic/rotation';
 
 const selectRotationMap = (state: RootState) => state.rotation.byProgram;
@@ -18,6 +18,6 @@ export const selectNextWorkout = createSelector([selectActiveProgram, selectActi
   return program.workouts.find((w) => w.id === id);
 });
 
-export const selectIsDeloadDue = createSelector([selectActiveProgram, selectActiveRotation], (program, rotation) =>
-  Boolean(program && rotation && isDeloadDue(rotation, program.rotation.length)),
-);
+export const selectTrainingWeek = createSelector(selectActiveRotation, (rotation) => rotation?.cycleNumber ?? 1);
+
+export const selectIsDeloadWeek = createSelector(selectTrainingWeek, (week) => isDeloadWeek(week));

@@ -76,9 +76,9 @@ export const SPLASH_IMAGE_WIDTH = 200;
 export const SPLASH_LOGO_SIZE = round((SPLASH_IMAGE_WIDTH * MARK_SCALE.splash * LOGO_VIEWBOX_SIZE) / ICON_CANVAS);
 
 export const SPLASH_TIMING = {
-  ringDraw: 750,
-  dumbbellDelay: 280,
-  textDelay: 420,
-  hold: 1150,
-  fadeOut: 380,
+  ringDraw: 550,
+  dumbbellDelay: 180,
+  textDelay: 250,
+  hold: 750,
+  fadeOut: 250,
 } as const;

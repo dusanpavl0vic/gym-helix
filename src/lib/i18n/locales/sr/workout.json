@@ -1,33 +1,65 @@
 {
-  "exercisePosition": "vežba {{current}}/{{total}}",
-  "colSet": "SET",
-  "colReps": "PONOV.",
-  "finishSet": "Završio sam seriju {{n}} ✓",
-  "finishWorkout": "Završi trening ✓",
-  "next": "SLEDEĆE",
-  "nextSet": "Serija {{n}} · {{detail}} · pauza {{rest}}s",
-  "nextExercise": "Nova vežba — {{name}} · pauza {{rest}}s",
-  "lastSet": "Poslednja serija — kraj treninga",
-  "lastTime": "Prošli put: {{sets}}",
-  "firstTime": "Prvi put: izaberi kilažu s kojom prva serija pada na {{reps}} ponavljanja.",
-  "target": "cilj {{value}}",
-  "suggestion": {
-    "increase": "Sve serije su stigle do vrha raspona. Predlog: +{{inc}} kg.",
-    "hold": "Zadrži kilažu i pokušaj ponavljanje više.",
-    "recover": "Ponavljanja padaju 2 treninga zaredom. Zadrži kilažu i proveri san i oporavak."
+  "exercisePosition": "vežba {{current}} od {{total}}",
+  "weekLabel": "Nedelja {{week}}",
+  "deloadTag": "DELOAD · RIR 4",
+  "deloadHint": "Deload nedelja — manje serija, ista kilaža, lagano.",
+  "chooseHint": "Izaberi vežbu koju radiš. Redosled je tvoj.",
+  "progress": "{{done}}/{{total}}",
+  "status": {
+    "todo": "nije počela",
+    "partial": "u toku",
+    "done": "završena",
+    "skipped": "preskočena"
   },
-  "rir": "RIR",
-  "rirOptional": "RIR (opciono)",
-  "editSet": "Izmeni seriju {{n}}",
-  "deloadTag": "DELOAD · RIR 4–5",
+  "suggest": {
+    "increase": "Predlog: {{weight}} · {{reps}} ponav.",
+    "decrease": "Predlog: {{weight}} (−10%) · {{reps}} ponav.",
+    "hold": "Predlog: {{weight}} · +1 ponav.",
+    "none": "Prvi put · kilaža za {{reps}} ponav."
+  },
+  "suggestion": {
+    "increase": "Sve serije su stigle do vrha raspona — dodato {{inc}} kg.",
+    "decrease": "Nijedna serija nije stigla do {{min}} ponavljanja — kilaža smanjena za 10%.",
+    "hold": "Ista kilaža, pokušaj jedno ponavljanje više po seriji.",
+    "none": "Prvi put: izaberi kilažu s kojom prva serija pada na {{min}}–{{max}} ponavljanja."
+  },
+  "lastTime": "Prošli put: {{sets}}",
+  "substituted": "umesto: {{name}}",
+  "skipped": "Vežba je preskočena.",
+  "set": "Serija {{n}}",
+  "setOf": "SERIJA {{n}} OD {{total}}",
+  "weight": "KG",
+  "reps": "PONAV.",
+  "weightPlaceholder": "unesi",
+  "decrease": "Smanji",
+  "increase": "Povećaj",
+  "finishSet": "Završi seriju",
+  "saveEdit": "Sačuvaj izmenu",
+  "unskip": "Vrati vežbu",
+  "finishWorkout": "Završi trening",
+  "finishEarly": {
+    "title": "Završiti trening?",
+    "body": "Neke serije nisu završene. Sačuvaće se samo završene serije.",
+    "confirm": "Završi trening"
+  },
+  "exit": {
+    "title": "Izađi iz treninga?",
+    "body": "Trening možeš da nastaviš kasnije sa istim podacima ili da ga odbaciš."
+  },
+  "keypad": {
+    "weightTitle": "Kilaža · serija {{n}}",
+    "repsTitle": "Ponavljanja · serija {{n}}"
+  },
   "rest": {
-    "title": "PAUZA IZMEĐU SERIJA",
-    "of": "od {{total}}s",
+    "title": "PAUZA",
+    "of": "od {{total}} s",
     "nextSet": "SLEDEĆA SERIJA",
-    "newExercise": "NOVA VEŽBA",
+    "exerciseDone": "VEŽBA ZAVRŠENA",
     "setOf": "Serija {{n}} · {{name}}",
-    "extend": "+{{sec}}s",
-    "skip": "Preskoči pauzu",
+    "chooseNext": "{{name}} — gotovo",
+    "chooseNextHint": "Kad pauza istekne, izaberi sledeću vežbu sa liste.",
+    "extend": "+{{sec}} s",
+    "skip": "Preskoči",
     "notificationTitle": "Pauza je gotova",
     "notificationBody": "Sledeće: {{name}}",
     "channelName": "Tajmer pauze"
@@ -42,14 +74,6 @@
     "removeSet": "Ukloni poslednju seriju",
     "details": "Detalji vežbe"
   },
-  "skipped": "PRESKOČENO",
-  "substituted": "umesto: {{name}}",
-  "exit": {
-    "title": "Izađi iz treninga?",
-    "body": "Trening ostaje sačuvan pa možeš da nastaviš kasnije, ili ga možeš odbaciti.",
-    "later": "Nastavi kasnije",
-    "discard": "Odbaci trening"
-  },
   "summary": {
     "title": "Trening završen",
     "duration": "trajanje",
@@ -63,6 +87,5 @@
     "save": "Sačuvaj trening",
     "celebrate": "Bravo!"
   },
-  "noActive": "Nema aktivnog treninga.",
-  "setDone": "Serija {{n}} završena"
+  "noActive": "Nema aktivnog treninga."
 }

@@ -1,33 +1,65 @@
 {
-  "exercisePosition": "exercise {{current}}/{{total}}",
-  "colSet": "SET",
-  "colReps": "REPS",
-  "finishSet": "Finished set {{n}} ✓",
-  "finishWorkout": "Finish workout ✓",
-  "next": "NEXT",
-  "nextSet": "Set {{n}} · {{detail}} · rest {{rest}}s",
-  "nextExercise": "New exercise — {{name}} · rest {{rest}}s",
-  "lastSet": "Last set — end of workout",
-  "lastTime": "Last time: {{sets}}",
-  "firstTime": "First time: pick a weight where the first set lands at {{reps}} reps.",
-  "target": "target {{value}}",
-  "suggestion": {
-    "increase": "All sets hit the top of the range. Suggestion: +{{inc}} kg.",
-    "hold": "Keep the weight and aim for one more rep.",
-    "recover": "Reps dropped two workouts in a row. Keep the weight and check sleep and recovery."
+  "exercisePosition": "exercise {{current}} of {{total}}",
+  "weekLabel": "Week {{week}}",
+  "deloadTag": "DELOAD · RIR 4",
+  "deloadHint": "Deload week — fewer sets, same weight, take it easy.",
+  "chooseHint": "Pick the exercise you want to do. Any order works.",
+  "progress": "{{done}}/{{total}}",
+  "status": {
+    "todo": "not started",
+    "partial": "in progress",
+    "done": "done",
+    "skipped": "skipped"
   },
-  "rir": "RIR",
-  "rirOptional": "RIR (optional)",
-  "editSet": "Edit set {{n}}",
-  "deloadTag": "DELOAD · RIR 4–5",
+  "suggest": {
+    "increase": "Suggested: {{weight}} · {{reps}} reps",
+    "decrease": "Suggested: {{weight}} (−10%) · {{reps}} reps",
+    "hold": "Suggested: {{weight}} · +1 rep",
+    "none": "First time · weight for {{reps}} reps"
+  },
+  "suggestion": {
+    "increase": "Every set hit the top of the range — {{inc}} kg added.",
+    "decrease": "No set reached {{min}} reps — weight reduced by 10%.",
+    "hold": "Same weight, aim for one more rep per set.",
+    "none": "First time: pick a weight where the first set lands at {{min}}–{{max}} reps."
+  },
+  "lastTime": "Last time: {{sets}}",
+  "substituted": "instead of: {{name}}",
+  "skipped": "This exercise is skipped.",
+  "set": "Set {{n}}",
+  "setOf": "SET {{n}} OF {{total}}",
+  "weight": "KG",
+  "reps": "REPS",
+  "weightPlaceholder": "enter",
+  "decrease": "Decrease",
+  "increase": "Increase",
+  "finishSet": "Finish set",
+  "saveEdit": "Save change",
+  "unskip": "Restore exercise",
+  "finishWorkout": "Finish workout",
+  "finishEarly": {
+    "title": "Finish workout?",
+    "body": "Some sets are not done. Only finished sets will be saved.",
+    "confirm": "Finish workout"
+  },
+  "exit": {
+    "title": "Leave workout?",
+    "body": "You can resume later with the same data, or discard this workout."
+  },
+  "keypad": {
+    "weightTitle": "Weight · set {{n}}",
+    "repsTitle": "Reps · set {{n}}"
+  },
   "rest": {
-    "title": "REST BETWEEN SETS",
-    "of": "of {{total}}s",
+    "title": "REST",
+    "of": "of {{total}} s",
     "nextSet": "NEXT SET",
-    "newExercise": "NEW EXERCISE",
+    "exerciseDone": "EXERCISE DONE",
     "setOf": "Set {{n}} · {{name}}",
-    "extend": "+{{sec}}s",
-    "skip": "Skip rest",
+    "chooseNext": "{{name}} — done",
+    "chooseNextHint": "When rest is over, pick the next exercise from the list.",
+    "extend": "+{{sec}} s",
+    "skip": "Skip",
     "notificationTitle": "Rest is over",
     "notificationBody": "Next: {{name}}",
     "channelName": "Rest timer"
@@ -42,14 +74,6 @@
     "removeSet": "Remove last set",
     "details": "Exercise details"
   },
-  "skipped": "SKIPPED",
-  "substituted": "instead of: {{name}}",
-  "exit": {
-    "title": "Leave workout?",
-    "body": "Your workout is saved so you can resume later, or you can discard it.",
-    "later": "Resume later",
-    "discard": "Discard workout"
-  },
   "summary": {
     "title": "Workout finished",
     "duration": "duration",
@@ -63,6 +87,5 @@
     "save": "Save workout",
     "celebrate": "Nice work!"
   },
-  "noActive": "No active workout.",
-  "setDone": "Set {{n}} done"
+  "noActive": "No active workout."
 }

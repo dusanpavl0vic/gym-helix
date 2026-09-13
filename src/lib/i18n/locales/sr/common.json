@@ -54,6 +54,7 @@
     "other": "ostalo"
   },
   "cardioTypes": {
+    "run": "Trčanje",
     "swim": "Bazen",
     "zone2": "Zona 2",
     "walk": "Hodanje",
@@ -62,5 +63,34 @@
   "errors": {
     "generic": "Nešto nije u redu. Pokušaj ponovo."
   },
-  "tagline": "trening planer · offline"
+  "tagline": "trening planer · offline",
+  "permissions": {
+    "allow": "Dozvoli",
+    "notNow": "Ne sada",
+    "openSettings": "Otvori podešavanja",
+    "notifications": {
+      "title": "Obaveštenje kad pauza istekne",
+      "body": "Da te obavestimo kad je vreme za sledeću seriju, i kad je telefon zaključan. Ništa drugo ne šaljemo.",
+      "denied": "Obaveštenja su isključena. Uključi ih u podešavanjima telefona da bi te tajmer pauze obaveštavao."
+    },
+    "camera": {
+      "title": "Pristup kameri",
+      "body": "Kamera se koristi samo kad slikaš vežbu koju sam dodaješ.",
+      "denied": "Pristup kameri je isključen. Uključi ga u podešavanjima telefona."
+    },
+    "photos": {
+      "title": "Pristup galeriji",
+      "body": "Galerija se koristi samo da izabereš sliku vežbe.",
+      "denied": "Pristup galeriji je isključen. Uključi ga u podešavanjima telefona."
+    }
+  },
+  "dialog": {
+    "later": "Nastavi kasnije",
+    "discard": "Odbaci",
+    "keep": "Ostani"
+  },
+  "keypad": {
+    "clear": "Očisti",
+    "ok": "U redu"
+  }
 }

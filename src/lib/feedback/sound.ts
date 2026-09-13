@@ -1,28 +1,46 @@
 import { createAudioPlayer, setAudioModeAsync, type AudioPlayer } from 'expo-audio';
 
-const REST_SOUND = require('../../../assets/sounds/rest-done.wav');
-const TICK_SOUND = require('../../../assets/sounds/tick.wav');
+const SOURCES = {
+  end: require('../../../assets/sounds/rest-done.wav'),
+  warning: require('../../../assets/sounds/rest-warning.wav'),
+  tick: require('../../../assets/sounds/tick.wav'),
+} as const;
 
-let restPlayer: AudioPlayer | null = null;
-let tickPlayer: AudioPlayer | null = null;
+type SoundName = keyof typeof SOURCES;
 
-const replay = (player: AudioPlayer) => {
-  player.seekTo(0).catch(() => undefined);
-  player.play();
-};
+const players: Partial<Record<SoundName, AudioPlayer>> = {};
+let audioModeReady: Promise<void> | null = null;
+
+/**
+ * 'mixWithOthers' does not request audio focus on Android, so music apps (Spotify…) keep playing
+ * underneath the short timer sounds instead of pausing.
+ */
+function ensureAudioMode(): Promise<void> {
+  audioModeReady ??= setAudioModeAsync({
+    playsInSilentMode: true,
+    interruptionMode: 'mixWithOthers',
+    shouldPlayInBackground: false,
+  }).catch(() => undefined);
+  return audioModeReady;
+}
+
+function player(name: SoundName): AudioPlayer {
+  players[name] ??= createAudioPlayer(SOURCES[name]);
+  return players[name];
+}
+
+async function play(name: SoundName): Promise<void> {
+  await ensureAudioMode();
+  const instance = player(name);
+  await instance.seekTo(0).catch(() => undefined);
+  instance.play();
+}
 
 export async function prepareSound(): Promise<void> {
-  await setAudioModeAsync({ playsInSilentMode: true, interruptionMode: 'mixWithOthers' }).catch(() => undefined);
-  restPlayer ??= createAudioPlayer(REST_SOUND);
-  tickPlayer ??= createAudioPlayer(TICK_SOUND);
+  await ensureAudioMode();
+  (Object.keys(SOURCES) as SoundName[]).forEach(player);
 }
 
-export function playRestSound(): void {
-  restPlayer ??= createAudioPlayer(REST_SOUND);
-  replay(restPlayer);
-}
-
-export function playTickSound(): void {
-  tickPlayer ??= createAudioPlayer(TICK_SOUND);
-  replay(tickPlayer);
-}
+export const playRestEndSound = () => play('end').catch(() => undefined);
+export const playRestWarningSound = () => play('warning').catch(() => undefined);
+export const playTickSound = () => play('tick').catch(() => undefined);

@@ -3,12 +3,27 @@
   "subtitle": "težina i obimi · poređenje na 4 nedelje",
   "add": "+ Novo merenje",
   "save": "Sačuvaj merenje",
-  "fields": { "weightKg": "Težina (kg)", "waistCm": "Struk (cm)", "armCm": "Ruka (cm)", "chestCm": "Grudi (cm)", "thighCm": "Butina (cm)" },
-  "short": { "weightKg": "TEŽINA", "waistCm": "STRUK", "armCm": "RUKA", "chestCm": "GRUDI", "thighCm": "BUTINA" },
+  "fields": {
+    "weightKg": "Težina (kg)",
+    "waistCm": "Struk (cm)",
+    "armCm": "Ruka (cm)",
+    "chestCm": "Grudi (cm)",
+    "thighCm": "Butina (cm)"
+  },
+  "short": {
+    "weightKg": "TEŽINA",
+    "waistCm": "STRUK",
+    "armCm": "RUKA",
+    "chestCm": "GRUDI",
+    "thighCm": "BUTINA"
+  },
   "compare": "Pre 4 nedelje",
   "noCompare": "Nema merenja od pre 4 nedelje",
   "empty": "Još nema merenja. Meri struk i ruku jednom nedeljno, ujutru.",
   "history": "Merenja",
   "deleteTitle": "Obrisati merenje?",
-  "atLeastOne": "Unesi bar jednu vrednost"
+  "atLeastOne": "Unesi bar jednu vrednost",
+  "weightDialog": {
+    "title": "Težina danas"
+  }
 }

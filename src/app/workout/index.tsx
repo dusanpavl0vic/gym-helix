@@ -1,3 +1,3 @@
-import { WorkoutScreen } from '@/features/workout';
+import { WorkoutOverviewScreen } from '@/features/workout';
 
-export default WorkoutScreen;
+export default WorkoutOverviewScreen;

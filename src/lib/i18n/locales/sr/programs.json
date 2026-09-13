@@ -47,18 +47,41 @@
     "addAlternative": "+ Alternativa",
     "perSide": "Po strani / nozi",
     "remove": "Ukloni vežbu",
-    "estimate": "~{{minutes}} min · {{sets}} serija"
+    "estimate": "~{{minutes}} min · {{sets}} serija",
+    "increment": "Povećanje kilaže kad sve serije stignu do vrha (kg)"
   },
   "seed": {
-    "name": "Recomp Full Body A/B/C",
+    "name": "Recomp — Upper/Lower 4+1",
+    "goal": "Rekompozicija · 4 treninga snage + kardio",
     "workouts": {
-      "FB_A": { "name": "Full Body A", "focus": "kvadricepsi / guranje" },
-      "FB_B": { "name": "Full Body B", "focus": "zadnja loža / povlačenje" },
-      "FB_C": { "name": "Full Body C", "focus": "jednonožno / gornji deo" }
+      "UPPER_A": {
+        "name": "Upper A",
+        "focus": "gornji deo · naglasak na guranju"
+      },
+      "LOWER_A": {
+        "name": "Lower A",
+        "focus": "noge · kvadriceps"
+      },
+      "UPPER_B": {
+        "name": "Upper B",
+        "focus": "gornji deo · naglasak na povlačenju"
+      },
+      "LOWER_B": {
+        "name": "Lower B",
+        "focus": "noge · zadnja loža i gluteusi"
+      }
     },
     "notes": {
-      "neverToFailure": "Nikad do otkaza.",
-      "trapBar": "Nikad do otkaza. Ako nema trap bar-a: hip thrust 3 × 8–12."
+      "bench30": "Klupa pod 30°.",
+      "calfPause": "Pauza 1 s u donjoj poziciji.",
+      "pullUpWeighted": "Sa dodatnim teretom kad ide. Zamena: lat pulldown."
+    },
+    "week": {
+      "title": "Predlog nedelje",
+      "hint": "Samo predlog — treninzi idu redom, kad god dođeš.",
+      "tempo": "Tempo: 2 s spuštanje, bez pauze, eksplozivno gore. RIR 2 osim gde piše drugačije.",
+      "rest": "Odmor · 8–10k koraka, opciono 20–30 min laganog hodanja",
+      "cardio": "Kardio · trčanje 40–60 min u zoni 2 ili bazen 30–45 min"
     }
   }
 }

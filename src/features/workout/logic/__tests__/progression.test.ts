@@ -1,52 +1,51 @@
 import type { ExercisePerformance, PlannedExercise } from '@/types/domain';
 
-import { suggestProgression } from '../progression';
 import { estimateWorkoutMin } from '../duration';
+import { suggestProgression } from '../progression';
 
-const legPress: PlannedExercise = {
-  id: 'a1', exerciseId: 'legPress', sets: 3, repsMin: 8, repsMax: 12, targetRir: 2, restSec: 150,
-};
-const perf = (weightKg: number, reps: number[], rir?: number): ExercisePerformance => ({
-  sessionId: Math.random().toString(), date: '2026-09-01', sets: reps.map((r) => ({ weightKg, reps: r, rir })),
+const STEP = 2.5;
+const planned: PlannedExercise = { id: 'a1', exerciseId: 'hackSquat', sets: 3, repsMin: 8, repsMax: 12, targetRir: 2, restSec: 180 };
+const perf = (weights: number | number[], reps: number[]): ExercisePerformance => ({
+  sessionId: 's',
+  date: '2026-09-01',
+  sets: reps.map((r, i) => ({ weightKg: Array.isArray(weights) ? weights[i] : weights, reps: r })),
 });
 
 describe('suggestProgression', () => {
-  it('suggests +5 kg for lower body when all sets hit the top of the range', () => {
-    const s = suggestProgression(legPress, [perf(100, [12, 12, 12], 2)], ['quads']);
-    expect(s.reason).toBe('increase');
-    expect(s.weightKg).toBe(105);
-    expect(s.reps).toEqual([8, 8, 8]);
+  it('suggests nothing the first time', () => {
+    const s = suggestProgression(planned, [], STEP);
+    expect(s).toMatchObject({ reason: 'none', weightKg: null, reps: [8, 8, 8] });
   });
 
-  it('suggests +2.5 kg for upper body', () => {
-    const s = suggestProgression({ ...legPress, exerciseId: 'bench' }, [perf(30, [12, 12, 12])], ['chest']);
-    expect(s.weightKg).toBe(32.5);
+  it('adds the increment when every set hits repsMax at the same weight', () => {
+    const s = suggestProgression(planned, [perf(100, [12, 12, 12])], STEP);
+    expect(s).toMatchObject({ reason: 'increase', weightKg: 102.5, reps: [8, 8, 8] });
+    expect(suggestProgression({ ...planned, incrementKg: 5 }, [perf(100, [12, 12, 12])], STEP).weightKg).toBe(105);
   });
 
-  it('holds when RIR was lower than target is not met', () => {
-    const s = suggestProgression(legPress, [perf(100, [12, 12, 12], 3)], ['quads']);
-    expect(s.reason).toBe('hold');
-    expect(s.weightKg).toBe(100);
+  it('does not increase when weights differ between sets', () => {
+    expect(suggestProgression(planned, [perf([100, 100, 95], [12, 12, 12])], STEP).reason).toBe('hold');
   });
 
-  it('holds with previous reps when range not reached', () => {
-    const s = suggestProgression(legPress, [perf(100, [11, 10, 9])], ['quads']);
-    expect(s.reason).toBe('hold');
-    expect(s.reps).toEqual([11, 10, 9]);
+  it('drops 10% when no set reached repsMin', () => {
+    const s = suggestProgression(planned, [perf(100, [7, 6, 5])], STEP);
+    expect(s).toMatchObject({ reason: 'decrease', weightKg: 90, reps: [8, 8, 8] });
+    expect(suggestProgression(planned, [perf(62.5, [7, 6, 6])], STEP).weightKg).toBe(55);
   });
 
-  it('flags recovery after two consecutive drops', () => {
-    const s = suggestProgression(legPress, [perf(100, [9, 8, 8]), perf(100, [10, 9, 9]), perf(100, [11, 10, 10])], ['quads']);
-    expect(s.reason).toBe('recover');
+  it('keeps the weight and targets one more rep per set', () => {
+    const s = suggestProgression(planned, [perf(100, [12, 10, 7])], STEP);
+    expect(s).toMatchObject({ reason: 'hold', weightKg: 100, reps: [12, 11, 8] });
   });
 
-  it('returns none without history', () => {
-    expect(suggestProgression(legPress, [], ['quads']).reason).toBe('none');
+  it('repeats the last session when progression is off', () => {
+    const s = suggestProgression({ ...planned, progression: 'none' }, [perf(0, [15, 12, 11])], STEP);
+    expect(s).toMatchObject({ reason: 'hold', weightKg: 0, reps: [15, 12, 11] });
   });
 });
 
 describe('estimateWorkoutMin', () => {
   it('includes warmup, sets and rests', () => {
-    expect(estimateWorkoutMin({ id: 'w', exercises: [legPress] })).toBe(Math.round((3 * 45 + 3 * 150) / 60) + 8);
+    expect(estimateWorkoutMin({ id: 'w', exercises: [planned] })).toBe(Math.round((3 * 45 + 3 * 180) / 60) + 8);
   });
 });

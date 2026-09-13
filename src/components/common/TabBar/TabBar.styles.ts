@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.paper,
     borderTopWidth: 1,
     borderTopColor: colors.border,
-    paddingTop: spacing.lg,
-    paddingHorizontal: spacing.x3,
+    paddingTop: spacing.md,
+    paddingHorizontal: spacing.xl,
   },
 });

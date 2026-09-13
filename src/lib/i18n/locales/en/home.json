@@ -8,20 +8,35 @@
   "start": "Start workout →",
   "resume": "Resume workout →",
   "chooseOther": "Choose another",
-  "chooseTitle": "Choose next workout",
-  "stats": { "thisWeek": "this week", "volume": "volume", "cycle": "cycle" },
+  "stats": {
+    "thisWeek": "this week",
+    "volume": "volume",
+    "cycle": "week"
+  },
   "pastWorkouts": "Past workouts",
   "progressLink": "Progress",
   "noHistory": "Your finished workouts will show up here.",
   "historyMeta": "{{day}} · {{minutes}} min · {{sets}} sets",
-  "quick": { "cardio": "Cardio / swim", "cardioHint": "Quick log", "weight": "Weight today", "weightHint": "Enter kg", "weightSaved": "Saved: {{value}} kg" },
-  "deload": {
-    "title": "Time for a deload week",
-    "body": "You finished 6 rounds. Next round: same exercises, 2 sets, same weight, RIR 4–5.",
-    "start": "Start deload",
-    "dismiss": "Not now",
-    "active_one": "Deload in progress · {{count}} workout left",
-    "active_other": "Deload in progress · {{count}} workouts left"
+  "quick": {
+    "cardio": "Cardio / swim",
+    "cardioHint": "Quick log"
   },
-  "emptyProgram": "The active program has no workouts. Add some in Plan."
+  "deload": {
+    "title": "Deload week — take it easy",
+    "body": "Week {{week}}: fewer sets, same weight, RIR 4."
+  },
+  "emptyProgram": "The active program has no workouts. Add some in Plan.",
+  "weight": {
+    "title": "Weight",
+    "today": "measured today",
+    "lastOn": "last: {{date}}",
+    "empty": "Log your morning weight",
+    "delta": "{{value}} kg in 7 days"
+  },
+  "weekBadge": "WEEK {{week}}",
+  "chooser": {
+    "title": "Choose a workout",
+    "meta": "{{exercises}} exercises · ~{{minutes}} min",
+    "next": "NEXT"
+  }
 }

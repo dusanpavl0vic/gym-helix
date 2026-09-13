@@ -6,17 +6,17 @@ import { IconButton } from '@/components/ui/IconButton';
 import { styles } from './CalendarMonth.styles';
 import type { CalendarMonthProps } from './CalendarMonth.types';
 
-export function CalendarMonth({ monthLabel, weekdayLabels, firstWeekday, days, selectedDay, onSelectDay, onPrev, onNext, prevLabel, nextLabel }: CalendarMonthProps) {
+export function CalendarMonth({ monthLabel, weekdayLabels, firstWeekday, days, selectedDay, onSelectDay, onPrev, onNext, prevLabel, nextLabel, legend }: CalendarMonthProps) {
   return (
     <View style={styles.card}>
       <View style={styles.head}>
-        <IconButton glyph="‹" onPress={onPrev} accessibilityLabel={prevLabel} />
+        <IconButton icon="back" onPress={onPrev} accessibilityLabel={prevLabel} />
         <Text style={styles.month}>{monthLabel}</Text>
-        <IconButton glyph="›" onPress={onNext} accessibilityLabel={nextLabel} />
+        <IconButton icon="chevron-right" color="ink" onPress={onNext} accessibilityLabel={nextLabel} />
       </View>
       <View style={styles.grid}>
         {weekdayLabels.map((label) => (
-          <View key={label} style={[styles.cell, { aspectRatio: 2 }]}>
+          <View key={label} style={styles.cell}>
             <Text style={styles.weekday}>{label}</Text>
           </View>
         ))}
@@ -26,12 +26,7 @@ export function CalendarMonth({ monthLabel, weekdayLabels, firstWeekday, days, s
         {days.map((day) => {
           const selected = selectedDay?.getTime() === day.date.getTime();
           return (
-            <Pressable
-              key={day.date.toISOString()}
-              style={styles.cell}
-              accessibilityRole="button"
-              accessibilityState={{ selected }}
-              onPress={() => onSelectDay(day.date)}>
+            <Pressable key={day.date.toISOString()} style={styles.cell} accessibilityRole="button" accessibilityState={{ selected }} onPress={() => onSelectDay(day.date)}>
               <View style={[styles.dayBox, selected && styles.daySelected, isToday(day.date) && styles.today]}>
                 <Text style={styles.dayText}>{day.date.getDate()}</Text>
                 <View style={styles.dots}>
@@ -42,6 +37,16 @@ export function CalendarMonth({ monthLabel, weekdayLabels, firstWeekday, days, s
             </Pressable>
           );
         })}
+      </View>
+      <View style={styles.legend}>
+        <View style={styles.legendItem}>
+          <View style={[styles.dot, styles.strength]} />
+          <Text style={styles.legendText}>{legend.strength}</Text>
+        </View>
+        <View style={styles.legendItem}>
+          <View style={[styles.dot, styles.cardio]} />
+          <Text style={styles.legendText}>{legend.cardio}</Text>
+        </View>
       </View>
     </View>
   );

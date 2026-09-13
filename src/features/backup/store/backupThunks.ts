@@ -9,6 +9,7 @@ import { saveSessions } from '@/features/workout/db/sessionsRepository';
 import { clearAllTables, getDb } from '@/lib/db';
 import type { AppDispatch, RootState } from '@/store';
 import { appReset, backupRestored } from '@/store/appActions';
+import { migrateToV2 } from '@/store/migrations';
 import type { BackupFile } from '@/types/backup';
 
 type ThunkApi = { state: RootState; dispatch: AppDispatch };
@@ -19,7 +20,7 @@ export const backupImported = createAsyncThunk<void, BackupFile, ThunkApi>('back
   await saveSessions(file.sessions);
   await saveCardio(file.cardio);
   await saveMeasurements(file.body);
-  dispatch(backupRestored(file.state));
+  dispatch(backupRestored(migrateToV2(file.state)));
   await Promise.all([dispatch(historyLoaded()), dispatch(cardioLoaded()), dispatch(bodyLoaded())]);
 });
 

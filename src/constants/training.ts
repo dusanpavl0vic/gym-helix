@@ -12,14 +12,18 @@ export const TARGET_RIR_BY_KIND: Record<ExerciseKind, number> = {
   isolation: 0,
 };
 
-export const WEIGHT_INCREMENT_KG = { upper: 2.5, lower: 5 } as const;
+export const DEFAULT_INCREMENT_KG = 2.5;
+export const INCREMENT_OPTIONS_KG = [1.25, 2.5, 5] as const;
+/** Suggested weight when no set reached the bottom of the rep range. */
+export const PROGRESSION_DECREASE_FACTOR = 0.9;
 export const WEIGHT_STEP_KG = 2.5;
 export const REPS_STEP = 1;
 export const RIR_OPTIONS = [0, 1, 2, 3, 4, 5] as const;
 
 export const DELOAD = {
-  afterCycles: 6,
-  maxSets: 2,
+  everyWeeks: 7,
+  setsFactor: 0.6,
+  minSets: 2,
   targetRir: 4,
 } as const;
 
@@ -30,3 +34,6 @@ export const WEEK_DAYS = 7;
 export const VOLUME_WEEKS = 6;
 export const PROGRESS_DELTA_DAYS = 30;
 export const BODY_COMPARE_DAYS = 28;
+
+/** Quick adjust buttons in the bodyweight dialog. */
+export const BODYWEIGHT_QUICK_STEPS_KG = [-0.5, -0.1, 0.1, 0.5];

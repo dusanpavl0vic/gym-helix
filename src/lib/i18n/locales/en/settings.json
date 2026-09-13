@@ -45,6 +45,21 @@
   },
   "restSoundHint": "System sound uses your phone notification sound.",
   "countdownTicks": "Ticks in the last 3 seconds",
-  "testSound": "Test sound",
-  "notificationsUnavailable": "Notifications and system sound do not work in Expo Go, so the app sound is used. They work normally in the APK and development builds."
+  "testSound": "Test end",
+  "notificationsUnavailable": "Notifications and system sound do not work in Expo Go, so the app sound is used. They work normally in the APK and development builds.",
+  "restWarning": "Sound 10 seconds before rest ends",
+  "sections": {
+    "profile": "Profile",
+    "sound": "Sound & rest",
+    "rest": "Rest & weight",
+    "equipment": "Equipment"
+  },
+  "restSoundDescriptions": {
+    "app": "Short in-app sound, music keeps playing",
+    "system": "Phone notification sound",
+    "off": "No sound, vibration only"
+  },
+  "allowNotifications": "Allow notifications",
+  "notificationsBlocked": "Notifications are not allowed, so the timer cannot tell you when rest ends with the screen locked.",
+  "testWarning": "Test 10 s"
 }

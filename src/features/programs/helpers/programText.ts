@@ -14,9 +14,11 @@ export const getWorkoutFocus = (workout: Workout | undefined, t: TFunction): str
 export const getPlannedNote = (planned: PlannedExercise, t: TFunction): string | undefined =>
   planned.noteKey ? t(planned.noteKey) : planned.note;
 
-/** Short badge for a workout: the last word when it is a single character ("Full Body A" → "A"), else a letter by position. */
+/** Short badge for a workout: "Upper A" → "UA", "Legs" → "LE", otherwise a letter by position. */
 export function getWorkoutBadge(name: string, index: number): string {
-  const last = name.trim().split(/\s+/).pop() ?? '';
-  if (last.length === 1) return last.toUpperCase();
+  const words = name.trim().split(/\s+/).filter(Boolean);
+  const last = words[words.length - 1] ?? '';
+  if (words.length > 1 && last.length === 1) return `${words[0][0]}${last}`.toUpperCase();
+  if (words.length === 1) return words[0].slice(0, 2).toUpperCase();
   return String.fromCharCode(65 + (index % 26));
 }

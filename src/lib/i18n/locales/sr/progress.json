@@ -17,7 +17,12 @@
   "history": {
     "empty": "Nema treninga u ovom mesecu.",
     "sessionMeta": "{{sets}} serija · {{minutes}} min · {{volume}} t",
-    "cardioMeta": "{{minutes}} min"
+    "cardioMeta": "{{minutes}} min",
+    "prevMonth": "Prethodni mesec",
+    "nextMonth": "Sledeći mesec",
+    "legendStrength": "trening",
+    "legendCardio": "kardio",
+    "cardioMetaDistance": "{{minutes}} min · {{distance}} km"
   },
   "session": {
     "title": "Trening",

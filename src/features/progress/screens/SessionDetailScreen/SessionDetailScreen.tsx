@@ -2,7 +2,6 @@ import { useRouter } from 'expo-router';
 import { Text, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { EmptyState } from '@/components/common/EmptyState';
 import { ListItem } from '@/components/common/ListItem';
 import { ScreenContainer } from '@/components/common/ScreenContainer';
@@ -33,21 +32,21 @@ export function SessionDetailScreen() {
   return (
     <ScreenContainer>
       <ScreenHeader eyebrow={view.eyebrow} title={view.title} onBack={back} backLabel={t('common:back')} />
-      <AnimatedEntry index={0} style={styles.stats}>
+      <View style={styles.stats}>
         {view.stats.map((s) => (
           <StatTile key={s.key} value={s.value} label={s.label} />
         ))}
-      </AnimatedEntry>
+      </View>
       <View style={styles.section}>
         <SectionHeader title={t('progress:session.exercises')} />
-        {view.exercises.map((e, i) => (
-          <AnimatedEntry key={e.key} index={i + 1}>
-            <ListItem
-              title={e.name}
-              subtitle={e.substituted ? `${e.detail}\n${e.substituted}` : e.detail}
-              onPress={() => router.push(routes.exercise(e.exerciseId))}
-            />
-          </AnimatedEntry>
+        {view.exercises.map((e) => (
+          <ListItem
+            key={e.key}
+            icon="workout"
+            title={e.name}
+            subtitle={e.substituted ? `${e.detail}\n${e.substituted}` : e.detail}
+            onPress={() => router.push(routes.exercise(e.exerciseId))}
+          />
         ))}
       </View>
       {view.bodyweight || view.notes ? (
@@ -56,7 +55,7 @@ export function SessionDetailScreen() {
           {view.notes ? <Text style={styles.notes}>{view.notes}</Text> : null}
         </Card>
       ) : null}
-      <Button label={t('progress:session.delete')} onPress={remove} variant="danger" />
+      <Button label={t('progress:session.delete')} icon="delete" onPress={remove} variant="danger" />
     </ScreenContainer>
   );
 }

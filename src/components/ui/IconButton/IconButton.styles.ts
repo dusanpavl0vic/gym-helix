@@ -1,15 +1,29 @@
 import { StyleSheet } from 'react-native';
 
+import type { ColorName } from '@/constants/colors';
 import { colors } from '@/constants/colors';
 import { metrics } from '@/constants/metrics';
 import { radii } from '@/constants/radii';
-import { typography } from '@/constants/typography';
+
+import type { IconButtonVariant } from './IconButton.types';
+
+export const ICON_SIZE = { md: 20, lg: 24 } as const;
+
+export const DEFAULT_ICON_COLOR: Record<IconButtonVariant, ColorName> = {
+  paper: 'ink',
+  cream: 'ink',
+  mint: 'forest',
+  ghost: 'ink',
+  dark: 'paperWarm',
+};
 
 export const styles = StyleSheet.create({
-  base: { width: metrics.iconButton, height: metrics.iconButton, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
+  md: { width: metrics.iconButton, height: metrics.iconButton, borderRadius: radii.md, alignItems: 'center', justifyContent: 'center' },
+  lg: { width: metrics.iconButtonLarge, height: metrics.iconButtonLarge, borderRadius: radii.lg, alignItems: 'center', justifyContent: 'center' },
   paper: { backgroundColor: colors.paper, borderWidth: 1, borderColor: colors.border },
   cream: { backgroundColor: colors.cream },
   mint: { backgroundColor: colors.mint },
-  pressed: { opacity: 0.7 },
-  glyph: { ...typography.title, fontSize: 16, color: colors.ink },
+  ghost: { backgroundColor: colors.transparent },
+  dark: { backgroundColor: colors.ink },
+  pressed: { opacity: 0.75 },
 });

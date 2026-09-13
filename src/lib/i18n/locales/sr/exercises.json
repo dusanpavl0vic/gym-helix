@@ -21,7 +21,11 @@
     "name": "Naziv",
     "muscles": "Mišići",
     "kind": "Tip vežbe",
-    "kinds": { "heavyCompound": "Teška složena", "machine": "Mašina / srednja", "isolation": "Izolacija" },
+    "kinds": {
+      "heavyCompound": "Teška složena",
+      "machine": "Mašina / srednja",
+      "isolation": "Izolacija"
+    },
     "photo": "Fotka",
     "gallery": "Galerija",
     "camera": "Kamera",
@@ -30,35 +34,301 @@
     "customBadge": "MOJA"
   },
   "items": {
-    "legPress": { "name": "Leg press", "instructions": ["Sedi sa leđima čvrsto uz naslon, stopala u širini kukova na sredini platforme.", "Spuštaj platformu 2 s dok kolena ne dođu blizu grudi, bez odvajanja karlice.", "Potisni kroz cela stopala do skoro opruženih kolena, bez zaključavanja."] },
-    "dumbbellBenchPress": { "name": "Potisak bučicama na ravnoj klupi", "instructions": ["Lezi na klupu, lopatice skupljene, stopala čvrsto na podu.", "Spuštaj bučice 2 s do visine grudi, laktovi pod oko 45°.", "Potisni gore i blago ka sredini bez udaranja bučica."] },
-    "wideGripLatPulldown": { "name": "Povlačenje na lat mašini, širi hvat", "instructions": ["Uhvati šipku malo šire od ramena i fiksiraj butine ispod jastuka.", "Povuci šipku do gornjeg dela grudi vodeći laktovima nadole.", "Vrati kontrolisano do punog istezanja leđa."] },
-    "romanianDeadlift": { "name": "Rumunsko mrtvo dizanje", "instructions": ["Stani uspravno sa šipkom, kolena blago savijena.", "Guraj kukove unazad i spuštaj šipku niz butine sa neutralnim leđima.", "Kad osetiš istezanje zadnje lože, vrati se aktivirajući gluteuse. Nikad do otkaza."] },
-    "sideLateralRaise": { "name": "Podizanje bučica u stranu", "instructions": ["Stani sa bučicama pored tela, laktovi blago savijeni.", "Podigni ruke u stranu do visine ramena, bez zamaha.", "Spuštaj polako 2 s."] },
-    "tricepsPushdown": { "name": "Triceps na kablu (uže)", "instructions": ["Uhvati uže, laktovi uz telo.", "Opruži ruke nadole i razdvoji krajeve užeta na dnu.", "Vrati kontrolisano bez pomeranja laktova."] },
-    "cableCrunch": { "name": "Trbušnjaci na kablu", "instructions": ["Klekni ispred kabla i drži uže pored glave.", "Savij trup ka kolenima skupljajući trbuh, kukovi ostaju mirni.", "Vrati se polako do istezanja."] },
-    "trapBarDeadlift": { "name": "Trap bar mrtvo dizanje", "instructions": ["Stani u sredinu trap bar-a, stopala u širini kukova.", "Uhvati ručke, grudi gore, leđa neutralna.", "Guraj pod nogama i ustani, pa spusti kontrolisano. Nikad do otkaza."] },
-    "chestSupportedDumbbellRow": { "name": "Veslanje sa osloncem na klupu", "instructions": ["Lezi grudima na kosu klupu sa bučicama u rukama.", "Povuci bučice ka kukovima skupljajući lopatice.", "Spusti polako do punog istezanja."] },
-    "seatedDumbbellShoulderPress": { "name": "Potisak bučicama iznad glave, sedeći", "instructions": ["Sedi uz uspravan naslon, bučice u visini ramena.", "Potisni iznad glave bez izvijanja donjih leđa.", "Spuštaj 2 s do visine ramena."] },
-    "lyingLegCurl": { "name": "Pregib potkolenice ležeći", "instructions": ["Lezi na mašinu, jastuk iznad peta.", "Savij kolena povlačeći pete ka gluteusima, karlica ostaje dole.", "Vrati polako do skoro opruženih nogu."] },
-    "machineChestPress": { "name": "Potisak na mašini za grudi", "instructions": ["Namesti sedište da ručke budu u visini sredine grudi.", "Potisni napred bez zaključavanja laktova.", "Vrati kontrolisano do istezanja grudi."] },
-    "inclineDumbbellCurl": { "name": "Pregib bicepsa na kosoj klupi", "instructions": ["Sedi na klupu pod 45–60°, ruke vise.", "Savij laktove bez pomeranja nadlaktica.", "Spuštaj polako do punog opružanja."] },
-    "facePull": { "name": "Face pull", "instructions": ["Kabl u visini lica, uhvati uže nadhvatom.", "Povuci ka licu razdvajajući ruke, laktovi visoko.", "Zadrži kratko i vrati kontrolisano."] },
-    "bulgarianSplitSquat": { "name": "Bugarski iskorak sa bučicama", "instructions": ["Zadnje stopalo na klupi, prednje dovoljno napred.", "Spuštaj se pravo dole dok prednja butina ne bude paralelna s podom.", "Guraj kroz prednju petu. Uradi sve serije po nozi."] },
-    "inclineDumbbellPress": { "name": "Kosi potisak bučicama", "instructions": ["Klupa pod 30°, lopatice skupljene.", "Spuštaj bučice 2 s ka gornjem delu grudi.", "Potisni gore bez zaključavanja laktova."] },
-    "neutralGripPulldown": { "name": "Povlačenje neutralnim hvatom", "instructions": ["Uhvati V ručku ili paralelne ručke.", "Povuci ka gornjem delu grudi, laktovi uz telo.", "Vrati polako do punog istezanja."] },
-    "legExtension": { "name": "Opružanje potkolenice", "instructions": ["Namesti naslon da kolena budu u osi mašine.", "Opruži noge do kraja i kratko zadrži.", "Spuštaj polako 2 s."] },
-    "cableCrossover": { "name": "Rastezanje na kablu / pec deck", "instructions": ["Stani između kablova, laktovi blago savijeni.", "Spoji ruke ispred grudi u luku.", "Vrati polako do istezanja grudi."] },
-    "cableLateralRaise": { "name": "Podizanje u stranu na kablu", "instructions": ["Kabl nisko, uhvati ručku suprotnom rukom.", "Podigni ruku u stranu do visine ramena.", "Spuštaj polako, bez zamaha trupom."] },
-    "standingCalfRaise": { "name": "Listovi stojeći", "instructions": ["Prednji deo stopala na ivici, pete slobodne.", "Spusti pete do punog istezanja i zadrži 1 s.", "Podigni se što više na prste."] },
-    "hangingKneeRaise": { "name": "Podizanje kolena u visu", "instructions": ["Visi na šipci, ramena aktivna.", "Podigni kolena ka grudima uvijajući karlicu.", "Spuštaj polako bez ljuljanja."] },
-    "hackSquat": { "name": "Hack čučanj", "instructions": ["Leđa uz naslon, stopala u širini ramena.", "Spuštaj se kontrolisano do dubine koju kolena dozvoljavaju.", "Potisni kroz cela stopala."] },
-    "gobletSquat": { "name": "Goblet čučanj", "instructions": ["Drži bučicu uz grudi.", "Spuštaj se između kolena, grudi gore.", "Ustani kroz cela stopala."] },
-    "assistedPullUp": { "name": "Potpomognuti zgib", "instructions": ["Kolena na platformi mašine ili stopala u gumi.", "Povuci bradu iznad šipke vodeći laktovima nadole.", "Spusti se polako do punog opružanja."] },
-    "hipThrust": { "name": "Hip thrust", "instructions": ["Gornji deo leđa na klupi, šipka preko kukova.", "Podigni kukove dok telo ne bude u liniji, stisni gluteuse.", "Spusti kontrolisano."] },
-    "dumbbellDeadlift": { "name": "Mrtvo dizanje sa bučicama", "instructions": ["Bučice ispred butina, kolena blago savijena.", "Guraj kukove unazad i spuštaj bučice niz noge.", "Vrati se aktivirajući gluteuse, leđa neutralna."] },
-    "walkingLunge": { "name": "Iskorak u hodu", "instructions": ["Iskorači napred i spusti zadnje koleno ka podu.", "Guraj kroz prednju petu i zakorači sledećom nogom.", "Trup ostaje uspravan."] },
-    "narrowStanceLegPress": { "name": "Leg press uskim stavom", "instructions": ["Stopala uža od kukova, niže na platformi.", "Spuštaj platformu kontrolisano.", "Potisni bez zaključavanja kolena."] },
-    "plank": { "name": "Plank", "instructions": ["Oslonac na podlaktice i prste.", "Telo u pravoj liniji, stisni trbuh i gluteuse.", "Drži zadato vreme i diši ravnomerno."] }
+    "legPress": {
+      "name": "Leg press",
+      "instructions": [
+        "Sedi sa leđima čvrsto uz naslon, stopala u širini kukova na sredini platforme.",
+        "Spuštaj platformu 2 s dok kolena ne dođu blizu grudi, bez odvajanja karlice.",
+        "Potisni kroz cela stopala do skoro opruženih kolena, bez zaključavanja."
+      ]
+    },
+    "dumbbellBenchPress": {
+      "name": "Potisak bučicama na ravnoj klupi",
+      "instructions": [
+        "Lezi na klupu, lopatice skupljene, stopala čvrsto na podu.",
+        "Spuštaj bučice 2 s do visine grudi, laktovi pod oko 45°.",
+        "Potisni gore i blago ka sredini bez udaranja bučica."
+      ]
+    },
+    "wideGripLatPulldown": {
+      "name": "Povlačenje na lat mašini, širi hvat",
+      "instructions": [
+        "Uhvati šipku malo šire od ramena i fiksiraj butine ispod jastuka.",
+        "Povuci šipku do gornjeg dela grudi vodeći laktovima nadole.",
+        "Vrati kontrolisano do punog istezanja leđa."
+      ]
+    },
+    "romanianDeadlift": {
+      "name": "Rumunsko mrtvo dizanje",
+      "instructions": [
+        "Stani uspravno sa šipkom, kolena blago savijena.",
+        "Guraj kukove unazad i spuštaj šipku niz butine sa neutralnim leđima.",
+        "Kad osetiš istezanje zadnje lože, vrati se aktivirajući gluteuse. Nikad do otkaza."
+      ]
+    },
+    "sideLateralRaise": {
+      "name": "Podizanje bučica u stranu",
+      "instructions": [
+        "Stani sa bučicama pored tela, laktovi blago savijeni.",
+        "Podigni ruke u stranu do visine ramena, bez zamaha.",
+        "Spuštaj polako 2 s."
+      ]
+    },
+    "tricepsPushdown": {
+      "name": "Triceps na kablu (uže)",
+      "instructions": [
+        "Uhvati uže, laktovi uz telo.",
+        "Opruži ruke nadole i razdvoji krajeve užeta na dnu.",
+        "Vrati kontrolisano bez pomeranja laktova."
+      ]
+    },
+    "cableCrunch": {
+      "name": "Trbušnjaci na kablu",
+      "instructions": [
+        "Klekni ispred kabla i drži uže pored glave.",
+        "Savij trup ka kolenima skupljajući trbuh, kukovi ostaju mirni.",
+        "Vrati se polako do istezanja."
+      ]
+    },
+    "trapBarDeadlift": {
+      "name": "Trap bar mrtvo dizanje",
+      "instructions": [
+        "Stani u sredinu trap bar-a, stopala u širini kukova.",
+        "Uhvati ručke, grudi gore, leđa neutralna.",
+        "Guraj pod nogama i ustani, pa spusti kontrolisano. Nikad do otkaza."
+      ]
+    },
+    "chestSupportedDumbbellRow": {
+      "name": "Veslanje sa osloncem na klupu",
+      "instructions": [
+        "Lezi grudima na kosu klupu sa bučicama u rukama.",
+        "Povuci bučice ka kukovima skupljajući lopatice.",
+        "Spusti polako do punog istezanja."
+      ]
+    },
+    "seatedDumbbellShoulderPress": {
+      "name": "Potisak bučicama iznad glave, sedeći",
+      "instructions": [
+        "Sedi uz uspravan naslon, bučice u visini ramena.",
+        "Potisni iznad glave bez izvijanja donjih leđa.",
+        "Spuštaj 2 s do visine ramena."
+      ]
+    },
+    "lyingLegCurl": {
+      "name": "Pregib potkolenice ležeći",
+      "instructions": [
+        "Lezi na mašinu, jastuk iznad peta.",
+        "Savij kolena povlačeći pete ka gluteusima, karlica ostaje dole.",
+        "Vrati polako do skoro opruženih nogu."
+      ]
+    },
+    "machineChestPress": {
+      "name": "Potisak na mašini za grudi",
+      "instructions": [
+        "Namesti sedište da ručke budu u visini sredine grudi.",
+        "Potisni napred bez zaključavanja laktova.",
+        "Vrati kontrolisano do istezanja grudi."
+      ]
+    },
+    "inclineDumbbellCurl": {
+      "name": "Pregib bicepsa na kosoj klupi",
+      "instructions": [
+        "Sedi na klupu pod 45–60°, ruke vise.",
+        "Savij laktove bez pomeranja nadlaktica.",
+        "Spuštaj polako do punog opružanja."
+      ]
+    },
+    "facePull": {
+      "name": "Face pull",
+      "instructions": [
+        "Kabl u visini lica, uhvati uže nadhvatom.",
+        "Povuci ka licu razdvajajući ruke, laktovi visoko.",
+        "Zadrži kratko i vrati kontrolisano."
+      ]
+    },
+    "bulgarianSplitSquat": {
+      "name": "Bugarski iskorak sa bučicama",
+      "instructions": [
+        "Zadnje stopalo na klupi, prednje dovoljno napred.",
+        "Spuštaj se pravo dole dok prednja butina ne bude paralelna s podom.",
+        "Guraj kroz prednju petu. Uradi sve serije po nozi."
+      ]
+    },
+    "inclineDumbbellPress": {
+      "name": "Kosi potisak bučicama",
+      "instructions": [
+        "Klupa pod 30°, lopatice skupljene.",
+        "Spuštaj bučice 2 s ka gornjem delu grudi.",
+        "Potisni gore bez zaključavanja laktova."
+      ]
+    },
+    "neutralGripPulldown": {
+      "name": "Povlačenje neutralnim hvatom",
+      "instructions": [
+        "Uhvati V ručku ili paralelne ručke.",
+        "Povuci ka gornjem delu grudi, laktovi uz telo.",
+        "Vrati polako do punog istezanja."
+      ]
+    },
+    "legExtension": {
+      "name": "Opružanje potkolenice",
+      "instructions": [
+        "Namesti naslon da kolena budu u osi mašine.",
+        "Opruži noge do kraja i kratko zadrži.",
+        "Spuštaj polako 2 s."
+      ]
+    },
+    "cableCrossover": {
+      "name": "Rastezanje na kablu / pec deck",
+      "instructions": [
+        "Stani između kablova, laktovi blago savijeni.",
+        "Spoji ruke ispred grudi u luku.",
+        "Vrati polako do istezanja grudi."
+      ]
+    },
+    "cableLateralRaise": {
+      "name": "Podizanje u stranu na kablu",
+      "instructions": [
+        "Kabl nisko, uhvati ručku suprotnom rukom.",
+        "Podigni ruku u stranu do visine ramena.",
+        "Spuštaj polako, bez zamaha trupom."
+      ]
+    },
+    "standingCalfRaise": {
+      "name": "Listovi stojeći",
+      "instructions": [
+        "Prednji deo stopala na ivici, pete slobodne.",
+        "Spusti pete do punog istezanja i zadrži 1 s.",
+        "Podigni se što više na prste."
+      ]
+    },
+    "hangingKneeRaise": {
+      "name": "Podizanje kolena u visu",
+      "instructions": [
+        "Visi na šipci, ramena aktivna.",
+        "Podigni kolena ka grudima uvijajući karlicu.",
+        "Spuštaj polako bez ljuljanja."
+      ]
+    },
+    "hackSquat": {
+      "name": "Hack čučanj",
+      "instructions": [
+        "Leđa uz naslon, stopala u širini ramena.",
+        "Spuštaj se kontrolisano do dubine koju kolena dozvoljavaju.",
+        "Potisni kroz cela stopala."
+      ]
+    },
+    "gobletSquat": {
+      "name": "Goblet čučanj",
+      "instructions": [
+        "Drži bučicu uz grudi.",
+        "Spuštaj se između kolena, grudi gore.",
+        "Ustani kroz cela stopala."
+      ]
+    },
+    "assistedPullUp": {
+      "name": "Potpomognuti zgib",
+      "instructions": [
+        "Kolena na platformi mašine ili stopala u gumi.",
+        "Povuci bradu iznad šipke vodeći laktovima nadole.",
+        "Spusti se polako do punog opružanja."
+      ]
+    },
+    "hipThrust": {
+      "name": "Hip thrust",
+      "instructions": [
+        "Gornji deo leđa na klupi, šipka preko kukova.",
+        "Podigni kukove dok telo ne bude u liniji, stisni gluteuse.",
+        "Spusti kontrolisano."
+      ]
+    },
+    "dumbbellDeadlift": {
+      "name": "Mrtvo dizanje sa bučicama",
+      "instructions": [
+        "Bučice ispred butina, kolena blago savijena.",
+        "Guraj kukove unazad i spuštaj bučice niz noge.",
+        "Vrati se aktivirajući gluteuse, leđa neutralna."
+      ]
+    },
+    "walkingLunge": {
+      "name": "Iskorak u hodu",
+      "instructions": [
+        "Iskorači napred i spusti zadnje koleno ka podu.",
+        "Guraj kroz prednju petu i zakorači sledećom nogom.",
+        "Trup ostaje uspravan."
+      ]
+    },
+    "narrowStanceLegPress": {
+      "name": "Leg press uskim stavom",
+      "instructions": [
+        "Stopala uža od kukova, niže na platformi.",
+        "Spuštaj platformu kontrolisano.",
+        "Potisni bez zaključavanja kolena."
+      ]
+    },
+    "plank": {
+      "name": "Plank",
+      "instructions": [
+        "Oslonac na podlaktice i prste.",
+        "Telo u pravoj liniji, stisni trbuh i gluteuse.",
+        "Drži zadato vreme i diši ravnomerno."
+      ]
+    },
+    "pullUp": {
+      "name": "Zgib",
+      "instructions": [
+        "Uhvati šipku nadhvatom malo šire od ramena.",
+        "Povuci se dok brada ne pređe šipku, laktovi idu nadole.",
+        "Spusti se kontrolisano do punog opružanja. Dodaj teret kad lako uradiš 10."
+      ]
+    },
+    "latPulldown": {
+      "name": "Povlačenje na lat mašini",
+      "instructions": [
+        "Uhvati šipku u širini ramena ili malo šire, butine ispod jastuka.",
+        "Povuci šipku do gornjeg dela grudi vodeći laktovima nadole.",
+        "Vrati polako do punog istezanja leđa."
+      ]
+    },
+    "seatedCableRow": {
+      "name": "Veslanje na kablu sedeći",
+      "instructions": [
+        "Sedi uspravno, stopala na osloncu, kolena blago savijena.",
+        "Povuci ručku ka stomaku skupljajući lopatice.",
+        "Vrati kontrolisano bez zaljuljavanja trupom."
+      ]
+    },
+    "overheadCableTricepsExtension": {
+      "name": "Triceps iznad glave na kablu",
+      "instructions": [
+        "Okreni se leđima kablu i drži uže iza glave.",
+        "Opruži ruke napred i gore, laktovi ostaju uz glavu.",
+        "Vrati polako do punog istezanja tricepsa."
+      ]
+    },
+    "seatedLegCurl": {
+      "name": "Pregib potkolenice sedeći",
+      "instructions": [
+        "Namesti mašinu da kolena budu u osi, jastuk iznad peta.",
+        "Savij kolena povlačeći pete ispod sedišta.",
+        "Vrati polako do skoro opruženih nogu."
+      ]
+    },
+    "seatedCalfRaise": {
+      "name": "Listovi sedeći",
+      "instructions": [
+        "Sedi na mašinu, jastuk na butinama, prednji deo stopala na osloncu.",
+        "Spusti pete do punog istezanja i zadrži 1 s.",
+        "Podigni pete što više."
+      ]
+    },
+    "hangingLegRaise": {
+      "name": "Podizanje nogu u visu",
+      "instructions": [
+        "Visi na šipci, ramena aktivna, telo mirno.",
+        "Podigni noge ka grudima uvijajući karlicu.",
+        "Spuštaj polako bez ljuljanja."
+      ]
+    }
   }
 }

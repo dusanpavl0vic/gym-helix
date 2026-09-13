@@ -13,6 +13,7 @@ import { useAppReady } from '@/hooks/useAppReady';
 import { prepareSound } from '@/lib/feedback/sound';
 import i18n from '@/lib/i18n';
 import { configureRestNotifications } from '@/lib/notifications/restNotifications';
+import { DialogProvider } from '@/lib/providers/DialogProvider';
 import { persistor, store } from '@/store';
 
 import { styles } from './AppProviders.styles';
@@ -51,7 +52,9 @@ export function AppProviders({ children }: { children: ReactNode }) {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <I18nextProvider i18n={i18n}>
-              <Bootstrap>{children}</Bootstrap>
+              <DialogProvider>
+                <Bootstrap>{children}</Bootstrap>
+              </DialogProvider>
             </I18nextProvider>
           </PersistGate>
         </Provider>

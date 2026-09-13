@@ -45,6 +45,21 @@
   },
   "restSoundHint": "Sistemski zvuk koristi zvuk obaveštenja telefona.",
   "countdownTicks": "Otkucaji u poslednje 3 sekunde",
-  "testSound": "Probaj zvuk",
-  "notificationsUnavailable": "U Expo Go-u obaveštenja i sistemski zvuk ne rade, pa se koristi zvuk aplikacije. U APK-u i development build-u rade normalno."
+  "testSound": "Probaj kraj",
+  "notificationsUnavailable": "U Expo Go-u obaveštenja i sistemski zvuk ne rade, pa se koristi zvuk aplikacije. U APK-u i development build-u rade normalno.",
+  "restWarning": "Zvuk 10 sekundi pre kraja pauze",
+  "sections": {
+    "profile": "Profil",
+    "sound": "Zvuk i pauza",
+    "rest": "Pauze i kilaža",
+    "equipment": "Oprema"
+  },
+  "restSoundDescriptions": {
+    "app": "Kratak zvuk iz aplikacije, muzika ne staje",
+    "system": "Zvuk obaveštenja telefona",
+    "off": "Bez zvuka, samo vibracija"
+  },
+  "allowNotifications": "Dozvoli obaveštenja",
+  "notificationsBlocked": "Obaveštenja nisu dozvoljena, pa tajmer ne može da javi kraj pauze kad je ekran zaključan.",
+  "testWarning": "Probaj 10 s"
 }

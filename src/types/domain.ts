@@ -37,6 +37,23 @@ export interface PlannedExercise {
   note?: string;
   noteKey?: string;
   alternativeIds?: string[];
+  /** Weight added when every set reaches repsMax (default DEFAULT_INCREMENT_KG). */
+  incrementKg?: number;
+  progression?: ProgressionType;
+}
+
+export type ProgressionType = 'double' | 'none';
+
+export type WeekPlanKind = 'strength' | 'rest' | 'cardio';
+
+/** Suggested weekly schedule, shown for information only (workouts still rotate in order). */
+export interface WeekPlanDay {
+  /** 1 = Monday … 7 = Sunday */
+  weekday: number;
+  kind: WeekPlanKind;
+  workoutId?: string;
+  noteKey?: string;
+  note?: string;
 }
 
 export interface Workout {
@@ -52,8 +69,10 @@ export interface Program {
   id: string;
   name?: string;
   nameKey?: string;
+  goalKey?: string;
   workouts: Workout[];
   rotation: string[];
+  weekPlan?: WeekPlanDay[];
   isDefault?: boolean;
   createdAt: string;
   updatedAt: string;
@@ -63,11 +82,9 @@ export interface RotationState {
   programId: string;
   nextIndex: number;
   lastCompletedAt?: string;
+  /** Training week = completed rotation cycles + 1. */
   cycleNumber: number;
   completedSessions: number;
-  sessionsSinceDeload: number;
-  deloadActive: boolean;
-  deloadRemaining: number;
 }
 
 export interface LoggedSet {
@@ -98,13 +115,17 @@ export interface Session {
   isDeload?: boolean;
 }
 
-export type CardioType = 'swim' | 'zone2' | 'walk' | 'hiit';
+export type CardioType = 'run' | 'swim' | 'zone2' | 'walk' | 'hiit';
 
 export interface CardioSession {
   id: string;
   type: CardioType;
   date: string;
   durationMin: number;
+  distanceKm?: number;
+  avgHeartRate?: number;
+  /** Perceived exertion 1–10. */
+  rpe?: number;
   notes?: string;
 }
 

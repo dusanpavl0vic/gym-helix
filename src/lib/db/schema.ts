@@ -55,3 +55,9 @@ CREATE TABLE IF NOT EXISTS body_measurements (
   thigh_cm REAL
 );
 `;
+
+export const SCHEMA_V2 = `
+ALTER TABLE cardio_sessions ADD COLUMN distance_km REAL;
+ALTER TABLE cardio_sessions ADD COLUMN avg_heart_rate INTEGER;
+ALTER TABLE cardio_sessions ADD COLUMN rpe INTEGER;
+`;

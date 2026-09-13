@@ -1,15 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { animation } from '@/constants/animation';
-import { TIMER_TICK_MS } from '@/constants/timer';
+import { COUNTDOWN_TICK_SEC, REST_WARNING_SEC, STALE_ALERT_MS, TIMER_TICK_MS } from '@/constants/timer';
 import { selectSettings } from '@/features/settings/store/settingsSelectors';
 import { useNow } from '@/hooks/useNow';
-import { restEndVibration, tickHaptic } from '@/lib/feedback/haptics';
-import { playRestSound, playTickSound } from '@/lib/feedback/sound';
+import { restEndVibration, tickHaptic, warningHaptic } from '@/lib/feedback/haptics';
+import { playRestEndSound, playRestWarningSound, playTickSound } from '@/lib/feedback/sound';
 import {
   cancelRestNotification,
-  ensureNotificationPermission,
+  getNotificationPermission,
   notificationsAvailable,
   scheduleRestEnd,
   setSystemSoundInForeground,
@@ -20,8 +19,11 @@ import { effectiveRestSound, restRemainingSec } from '../helpers/rest';
 import { restCleared, restExtended } from '../store/activeSessionSlice';
 import { selectRest } from '../store/activeSessionSelectors';
 
-/** Late by more than this (e.g. app was in background) → close silently, the notification already alerted. */
-const STALE_ALERT_MS = 2500;
+interface AlertState {
+  endsAt: number;
+  warned: boolean;
+  ticks: Set<number>;
+}
 
 export function useRestTimer(nextName: string) {
   const { t } = useTranslation('workout');
@@ -30,7 +32,7 @@ export function useRestTimer(nextName: string) {
   const settings = useAppSelector(selectSettings);
   const now = useNow(TIMER_TICK_MS, Boolean(rest));
   const notificationId = useRef<string | null>(null);
-  const lastTick = useRef<number | null>(null);
+  const alerts = useRef<AlertState | null>(null);
 
   const remainingSec = rest ? restRemainingSec(rest.endsAt, now) : 0;
   const soundMode = effectiveRestSound(settings.restSound, notificationsAvailable);
@@ -39,21 +41,17 @@ export function useRestTimer(nextName: string) {
     setSystemSoundInForeground(soundMode === 'system');
   }, [soundMode]);
 
-  // Schedule a local notification so the alert also fires with the screen locked.
+  // A local notification alerts even with the screen locked. Permission is asked earlier (workout start), never here.
   useEffect(() => {
     let cancelled = false;
     const previous = notificationId.current;
     notificationId.current = null;
     cancelRestNotification(previous);
-    if (!rest || !notificationsAvailable || (!settings.notifications && soundMode !== 'system')) return undefined;
+    if (!rest || (!settings.notifications && soundMode !== 'system')) return undefined;
     (async () => {
-      if (!(await ensureNotificationPermission()) || cancelled) return;
-      const id = await scheduleRestEnd(
-        rest.endsAt,
-        t('rest.notificationTitle'),
-        t('rest.notificationBody', { name: nextName }),
-        soundMode !== 'off',
-      );
+      const permission = await getNotificationPermission();
+      if (!permission.granted || cancelled) return;
+      const id = await scheduleRestEnd(rest.endsAt, t('rest.notificationTitle'), t('rest.notificationBody', { name: nextName }), soundMode !== 'off');
       if (cancelled) cancelRestNotification(id);
       else notificationId.current = id;
     })();
@@ -62,24 +60,34 @@ export function useRestTimer(nextName: string) {
     };
   }, [rest?.endsAt, settings.notifications, soundMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Countdown ticks and the end-of-rest alert.
   useEffect(() => {
     if (!rest) {
-      lastTick.current = null;
+      alerts.current = null;
       return;
     }
+    if (!alerts.current || alerts.current.endsAt !== rest.endsAt) {
+      // Very short rests (or +15 s bringing it back above 10 s) set this correctly.
+      alerts.current = { endsAt: rest.endsAt, warned: restRemainingSec(rest.endsAt, now) <= REST_WARNING_SEC, ticks: new Set() };
+    }
+    const state = alerts.current;
+
     if (remainingSec > 0) {
-      if (settings.countdownTicks && remainingSec <= animation.countdownTickSec && lastTick.current !== remainingSec) {
-        lastTick.current = remainingSec;
+      if (settings.restWarning && !state.warned && remainingSec <= REST_WARNING_SEC) {
+        state.warned = true;
+        warningHaptic();
+        if (soundMode !== 'off') playRestWarningSound();
+      }
+      if (settings.countdownTicks && remainingSec <= COUNTDOWN_TICK_SEC && !state.ticks.has(remainingSec)) {
+        state.ticks.add(remainingSec);
         tickHaptic();
-        if (soundMode === 'app') playTickSound();
+        if (soundMode !== 'off') playTickSound();
       }
       return;
     }
-    const lateBy = now - rest.endsAt;
-    if (lateBy < STALE_ALERT_MS) {
+
+    if (now - rest.endsAt < STALE_ALERT_MS) {
       if (settings.vibration) restEndVibration();
-      if (soundMode === 'app') playRestSound();
+      if (soundMode === 'app') playRestEndSound();
     }
     dispatch(restCleared());
   }, [remainingSec, rest, now, settings, soundMode, dispatch]);

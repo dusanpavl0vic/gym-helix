@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+import { colors } from '@/constants/colors';
 import { metrics } from '@/constants/metrics';
 import { radii } from '@/constants/radii';
 import { spacing } from '@/constants/spacing';
@@ -8,13 +9,13 @@ import { typography } from '@/constants/typography';
 export const styles = StyleSheet.create({
   item: {
     flex: 1,
-    minHeight: metrics.buttonHeight,
+    minHeight: metrics.tabItemHeight,
     borderRadius: radii.xl,
-    paddingVertical: spacing.lg,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 5,
+    gap: spacing.xxs,
   },
-  icon: { width: metrics.tabIcon, height: metrics.tabIcon, borderRadius: 6, borderWidth: 2.5 },
-  label: { ...typography.tabLabel },
+  focused: { backgroundColor: colors.mint },
+  label: { ...typography.tabLabel, color: colors.mutedLight },
+  labelFocused: { color: colors.forest },
 });

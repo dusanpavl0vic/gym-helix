@@ -1,6 +1,8 @@
+import type { IconName } from '@/constants/icons';
+
 export interface QuickActionCardProps {
   title: string;
   hint: string;
-  glyph: string;
+  icon: IconName;
   onPress: () => void;
 }

@@ -6,11 +6,11 @@ import type { ProgramsState } from '@/types/backup';
 import type { PlannedExercise, Program, Workout } from '@/types/domain';
 import { createId } from '@/utils/id';
 
-import { createSeedProgram } from '../data/seedProgram';
+import { createDefaultProgram } from '../data/seedProgram';
 import { cloneProgram, createEmptyProgram, createPlannedExercise, moveItem } from '../helpers/programMutations';
 
 const createInitialState = (): ProgramsState => {
-  const seed = createSeedProgram();
+  const seed = createDefaultProgram();
   return { programs: { [seed.id]: seed }, order: [seed.id], activeProgramId: seed.id };
 };
 
@@ -51,7 +51,7 @@ const programsSlice = createSlice({
       if (state.activeProgramId === action.payload) state.activeProgramId = state.order[0];
     },
     defaultProgramRestored(state) {
-      const seed = createSeedProgram(DEFAULT_PROGRAM_ID);
+      const seed = createDefaultProgram(DEFAULT_PROGRAM_ID);
       if (!state.order.includes(seed.id)) state.order.unshift(seed.id);
       state.programs[seed.id] = seed;
       state.activeProgramId = seed.id;

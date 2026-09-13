@@ -7,13 +7,15 @@ import { typography } from '@/constants/typography';
 
 export const styles = StyleSheet.create({
   group: { gap: spacing.xl },
-  grid: { flexDirection: 'row', gap: spacing.lg },
+  sectionTitle: { flexDirection: 'row', alignItems: 'center', gap: spacing.md },
+  sectionText: { ...typography.h3, color: colors.ink },
   hint: { ...typography.small, color: colors.muted },
   warning: { ...typography.small, color: colors.danger },
+  label: { ...typography.monoMicro, color: colors.muted },
+  buttons: { flexDirection: 'row', gap: spacing.md },
   plates: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   plate: { minWidth: 56, minHeight: 44, paddingHorizontal: spacing.lg, borderRadius: radii.md, borderWidth: 1, borderColor: colors.border, backgroundColor: colors.paperWarm, alignItems: 'center', justifyContent: 'center' },
   plateOn: { backgroundColor: colors.forest, borderColor: colors.forest },
   plateText: { ...typography.monoS, color: colors.slate },
   plateTextOn: { color: colors.paperWarm },
-  label: { ...typography.monoMicro, color: colors.muted },
 });

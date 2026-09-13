@@ -33,4 +33,11 @@ export const EXERCISE_IMAGES: Record<string, ImageSourcePropType[]> = {
   walkingLunge: [require('../../../../assets/exercises/walking-lunge/0.jpg'), require('../../../../assets/exercises/walking-lunge/1.jpg')],
   narrowStanceLegPress: [require('../../../../assets/exercises/narrow-stance-leg-press/0.jpg'), require('../../../../assets/exercises/narrow-stance-leg-press/1.jpg')],
   plank: [require('../../../../assets/exercises/plank/0.jpg'), require('../../../../assets/exercises/plank/1.jpg')],
+  pullUp: [require('../../../../assets/exercises/pull-up/0.jpg'), require('../../../../assets/exercises/pull-up/1.jpg')],
+  latPulldown: [require('../../../../assets/exercises/lat-pulldown/0.jpg'), require('../../../../assets/exercises/lat-pulldown/1.jpg')],
+  seatedCableRow: [require('../../../../assets/exercises/seated-cable-row/0.jpg'), require('../../../../assets/exercises/seated-cable-row/1.jpg')],
+  overheadCableTricepsExtension: [require('../../../../assets/exercises/overhead-cable-triceps-extension/0.jpg'), require('../../../../assets/exercises/overhead-cable-triceps-extension/1.jpg')],
+  seatedLegCurl: [require('../../../../assets/exercises/seated-leg-curl/0.jpg'), require('../../../../assets/exercises/seated-leg-curl/1.jpg')],
+  seatedCalfRaise: [require('../../../../assets/exercises/seated-calf-raise/0.jpg'), require('../../../../assets/exercises/seated-calf-raise/1.jpg')],
+  hangingLegRaise: [require('../../../../assets/exercises/hanging-leg-raise/0.jpg'), require('../../../../assets/exercises/hanging-leg-raise/1.jpg')],
 };
