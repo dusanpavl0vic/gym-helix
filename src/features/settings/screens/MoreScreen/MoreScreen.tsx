@@ -5,11 +5,15 @@ import { useTranslation } from 'react-i18next';
 
 import { AnimatedEntry } from '@/components/common/AnimatedEntry';
 import { ListItem } from '@/components/common/ListItem';
+import { Logo } from '@/components/common/Logo';
 import { ScreenContainer } from '@/components/common/ScreenContainer';
 import { ScreenHeader } from '@/components/common/ScreenHeader';
+import { APP_NAME } from '@/constants/config';
 import { routes } from '@/constants/routes';
 
 import { styles } from './MoreScreen.styles';
+
+const BRAND_LOGO_SIZE = 64;
 
 const ITEMS = [
   { key: 'programs', glyph: 'P', route: routes.programs },
@@ -42,6 +46,10 @@ export function MoreScreen() {
             />
           </AnimatedEntry>
         ))}
+      </View>
+      <View style={styles.brand}>
+        <Logo size={BRAND_LOGO_SIZE} withBackground />
+        <Text style={styles.brandName}>{APP_NAME}</Text>
       </View>
       <Text style={styles.version}>{t('more.version', { version: Constants.expoConfig?.version ?? '1.0.0' })}</Text>
     </ScreenContainer>

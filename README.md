@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/brand/wordmark.png" alt="GymPersonal" width="560"></p>
+
 # GymPersonal
 
 Offline trening planer (Expo, React Native, TypeScript). Rotacija Full Body A → B → C bez vezivanja za dane u nedelji,
@@ -23,6 +25,7 @@ npx eas-cli@latest build -p android --profile preview
 |---|---|
 | `npm test` | Jest testovi (rotacija, deload, progresija, pločice, analitika, i18n ključevi) |
 | `npm run typecheck` | TypeScript provera |
+| `npm run generate:brand` | Iz `src/constants/brand.ts` generiše ikonicu, Android adaptive ikonicu, splash, favicon i baner |
 | `npm run fetch:exercises` | Povlači slike vežbi iz free-exercise-db u `assets/exercises/` i generiše `exercises.generated.ts` |
 
 ## Arhitektura

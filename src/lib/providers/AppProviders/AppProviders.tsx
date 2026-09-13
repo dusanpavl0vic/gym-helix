@@ -1,11 +1,13 @@
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, type ReactNode } from 'react';
-import { I18nextProvider } from 'react-i18next';
+import { useEffect, useState, type ReactNode } from 'react';
+import { I18nextProvider, useTranslation } from 'react-i18next';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import { AnimatedSplash } from '@/components/common/AnimatedSplash';
+import { APP_NAME } from '@/constants/config';
 import { persistedDataLoaded } from '@/features/backup/store/backupThunks';
 import { useAppReady } from '@/hooks/useAppReady';
 import { prepareSound } from '@/lib/feedback/sound';
@@ -18,7 +20,9 @@ import { styles } from './AppProviders.styles';
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
 function Bootstrap({ children }: { children: ReactNode }) {
+  const { t } = useTranslation('common');
   const ready = useAppReady();
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     store.dispatch(persistedDataLoaded());
@@ -30,7 +34,14 @@ function Bootstrap({ children }: { children: ReactNode }) {
     if (ready) SplashScreen.hideAsync().catch(() => undefined);
   }, [ready]);
 
-  return ready ? children : null;
+  if (!ready) return null;
+
+  return (
+    <>
+      {children}
+      {splashDone ? null : <AnimatedSplash title={APP_NAME} tagline={t('tagline')} onFinish={() => setSplashDone(true)} />}
+    </>
+  );
 }
 
 export function AppProviders({ children }: { children: ReactNode }) {

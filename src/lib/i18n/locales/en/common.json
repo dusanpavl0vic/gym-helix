@@ -12,21 +12,54 @@
   "loading": "Loading…",
   "notFound": "Not found",
   "none": "—",
-  "units": { "kg": "kg", "lb": "lb", "cm": "cm", "sec": "s", "min": "min", "tonnes": "t" },
+  "units": {
+    "kg": "kg",
+    "lb": "lb",
+    "cm": "cm",
+    "sec": "s",
+    "min": "min",
+    "tonnes": "t"
+  },
   "bodyweight": "bodyweight",
   "today": "today",
   "yesterday": "yesterday",
   "daysAgo_one": "{{count}} day ago",
   "daysAgo_other": "{{count}} days ago",
-  "tabs": { "today": "Today", "plan": "Plan", "progress": "Progress", "more": "More" },
+  "tabs": {
+    "today": "Today",
+    "plan": "Plan",
+    "progress": "Progress",
+    "more": "More"
+  },
   "muscles": {
-    "chest": "Chest", "back": "Back", "quads": "Quads", "hamstrings": "Hamstrings", "glutes": "Glutes",
-    "shoulders": "Shoulders", "biceps": "Biceps", "triceps": "Triceps", "calves": "Calves", "core": "Core"
+    "chest": "Chest",
+    "back": "Back",
+    "quads": "Quads",
+    "hamstrings": "Hamstrings",
+    "glutes": "Glutes",
+    "shoulders": "Shoulders",
+    "biceps": "Biceps",
+    "triceps": "Triceps",
+    "calves": "Calves",
+    "core": "Core"
   },
   "equipment": {
-    "machine": "machine", "dumbbell": "dumbbells", "barbell": "barbell", "cable": "cable", "trap bar": "trap bar",
-    "body only": "bodyweight", "other": "other"
+    "machine": "machine",
+    "dumbbell": "dumbbells",
+    "barbell": "barbell",
+    "cable": "cable",
+    "trap bar": "trap bar",
+    "body only": "bodyweight",
+    "other": "other"
   },
-  "cardioTypes": { "swim": "Swim", "zone2": "Zone 2", "walk": "Walk", "hiit": "HIIT" },
-  "errors": { "generic": "Something went wrong. Please try again." }
+  "cardioTypes": {
+    "swim": "Swim",
+    "zone2": "Zone 2",
+    "walk": "Walk",
+    "hiit": "HIIT"
+  },
+  "errors": {
+    "generic": "Something went wrong. Please try again."
+  },
+  "tagline": "training planner · offline"
 }

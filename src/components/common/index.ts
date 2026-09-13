@@ -14,3 +14,5 @@ export * from './SectionHeader';
 export * from './TabBar';
 export * from './TabBarItem';
 export * from './ChartCard';
+export * from './AnimatedSplash';
+export * from './Logo';
